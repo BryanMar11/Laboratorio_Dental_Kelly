@@ -1,0 +1,316 @@
+/* --- VARIABLES DE COLOR (Predominante Blanco, Negro y Dorado) --- */
+:root {
+    --bg-light: #ffffff;       /* Blanco puro para el fondo principal */
+    --bg-top-bar: #1a1a1a;     /* Negro suave para la barra de aviso superior */
+    --bg-navbar: #262626;      /* El negro "no tan oscuro" (antracita elegante) para la navbar */
+    --accent-gold: #b8922f;    /* Dorado premium */
+    --text-dark: #1a1a1a;      /* Negro suave para los textos principales */
+    --text-muted: #555555;     /* Gris oscuro para las descripciones */
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- RESET BÁSICO --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+/* --- 1. BARRA DE AVISO SUPERIOR --- */
+.top-bar {
+    background-color: var(--bg-top-bar);
+    color: #ffffff;
+    text-align: center;
+    padding: 8px 15px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+/* --- 2. NAVBAR (Negro Suave e Interactiva) --- */
+.main-header {
+    background-color: var(--bg-navbar);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative; /* Importante para posicionar el menú desplegable */
+    z-index: 100;
+}
+.logo {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 18px;
+}
+.logo span {
+    color: var(--accent-gold);
+}
+
+/* Estilos para el botón de tres rayitas en celular */
+.menu-toggle {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 26px;
+    cursor: pointer;
+    display: block; /* Visible en celular */
+}
+
+/* Menú en Móvil: Se posiciona de forma absoluta debajo de la navbar */
+.nav-menu {
+    display: none; /* Oculto por defecto en celular */
+    flex-direction: column;
+    background-color: var(--bg-navbar);
+    position: absolute;
+    top: 100%; /* Justo abajo de la barra principal */
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    gap: 20px;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Clase especial que añadiremos con JavaScript para MOSTRAR el menú */
+.nav-menu.active {
+    display: flex;
+}
+
+.nav-menu a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 5px 0;
+}
+.nav-menu a:hover {
+    color: var(--accent-gold);
+}
+
+/* Estilo especial para tu botón de "Contáctenos" */
+.nav-menu a.btn-nav {
+    color: var(--accent-gold);
+    border: 1px solid var(--accent-gold);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.logo {
+    color: #ffffff; /* Letras blancas para que resalten sobre el fondo oscuro */
+    font-weight: bold;
+    font-size: 18px;
+}
+.logo span {
+    color: var(--accent-gold);
+}
+.nav-menu a {
+    display: none; /* Ocultos en móvil */
+}
+.nav-menu a.btn-nav {
+    display: inline-block;
+    color: var(--accent-gold); /* El botón de contactar ahora resalta en dorado */
+    text-decoration: none;
+    border: 1px solid var(--accent-gold);
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* --- 3. HERO SECTION (Fondo Blanco en Celular) --- */
+.hero {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    padding: 40px 20px 60px 20px;
+    text-align: center;
+}
+.hero-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.hero-content h1 {
+    font-size: 28px;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+}
+.hero-content .highlight {
+    color: var(--accent-gold); /* El texto resaltado va en dorado */
+}
+.hero-content p {
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+.btn-cta {
+    display: inline-block;
+    background-color: var(--accent-gold);
+    color: #ffffff; /* Texto blanco sobre el botón dorado */
+    text-decoration: none;
+    font-weight: bold;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(184, 146, 47, 0.2);
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05); /* Sombra suave para la foto */
+}
+
+/* --- 4. BARRA DE ESTADÍSTICAS (Elegante sobre fondo blanco) --- */
+.stats-bar-container {
+    padding: 0 20px;
+    margin-top: -10px; 
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 10;
+}
+.stats-bar {
+    background-color: #fafafa; /* Un gris casi blanco muy limpio */
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px 15px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+.stat-item {
+    padding: 5px;
+}
+.stat-item:nth-child(5) {
+    grid-column: span 2; /* Centra el tercer dato abajo en móvil */
+}
+.stat-item h3 {
+    color: var(--accent-gold);
+    font-size: 24px;
+    margin-bottom: 2px;
+}
+.stat-item p {
+    color: var(--text-dark);
+    font-size: 13px;
+    font-weight: 500;
+}
+.stats-bar .divider {
+    display: none;
+}
+
+
+/* ==========================================================================
+   5. MEDIA QUERIES (Para Computadora - Todo Unificado y Optimizado)
+   ========================================================================== */
+@media (min-width: 768px) {
+    
+    /* Ocultamos el botón de hamburguesa (☰) en pantallas grandes */
+    .menu-toggle {
+        display: none;
+    }
+
+    /* Mostramos el menú horizontal normal en PC */
+    .nav-menu {
+        display: flex;
+        flex-direction: row;
+        position: static;    /* Quita el posicionamiento absoluto del celular */
+        width: auto;
+        padding: 0;
+        gap: 0;
+        box-shadow: none;
+        border-top: none;
+        background-color: transparent; /* Evita que pise el fondo de la navbar */
+    }
+
+    /* Enlaces del menú en blanco para que resalten sobre la navbar negra suave */
+    .nav-menu a {
+        display: inline-block;
+        color: #ffffff; 
+        text-decoration: none;
+        margin-left: 25px;
+        font-size: 15px;
+        font-weight: 500;
+        transition: color 0.2s;
+    }
+
+    .nav-menu a:hover {
+        color: var(--accent-gold); /* Efecto hover dorado */
+    }
+
+    /* Ajuste para el botón de "Contáctenos" dentro del menú en PC */
+    .nav-menu a.btn-nav {
+        color: var(--accent-gold);
+        border: 1px solid var(--accent-gold);
+        padding: 6px 15px;
+        border-radius: 5px;
+        text-align: left;
+    }
+
+    /* --- HERO SECTION EN PC (Dos columnas: Texto izquierda, Foto derecha) --- */
+    .hero {
+        padding: 60px 40px 80px 40px;
+        text-align: left;
+    }
+
+    .hero-container {
+        flex-direction: row;
+        align-items: center;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .hero-content {
+        flex: 1;
+    }
+
+    .hero-image {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .hero-image img {
+        max-width: 420px;
+    }
+
+    .btn-cta {
+        width: auto; /* El botón de WhatsApp ya no ocupa todo el ancho de la pantalla */
+    }
+
+    /* --- BARRA DE ESTADÍSTICAS EN PC (Horizontal y Limpia) --- */
+    .stats-bar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 25px;
+    }
+
+    /* Volvemos a mostrar las líneas divisorias entre datos en PC */
+    .stats-bar .divider {
+        display: block;
+        width: 1px;
+        height: 40px;
+        margin: 0;
+        background-color: rgba(212, 175, 55, 0.2); /* Divisor sutil dorado */
+    }
+
+    /* Quitamos el comportamiento de cuadrícula móvil al último elemento */
+    .stat-item:nth-child(5) {
+        grid-column: auto;
+    }
+}
