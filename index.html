@@ -4,69 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laboratorio Dental Kelly Cabrera</title>
-    <!-- Favicon temporal usando un emoji de diente -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦷</text></svg>">
-    <!-- Enlace a tu archivo CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- 1. Barra de Aviso Superior -->
     <div class="top-bar">
-        <p>Atención personalizada y prótesis de alta precisión</p>
+        <div class="lang-switcher">
+            <button class="lang-btn active" id="btn-es" onclick="changeLanguage('es')">ES</button>
+            <span class="lang-divider">|</span>
+            <button class="lang-btn" id="btn-en" onclick="changeLanguage('en')">EN</button>
+        </div>
     </div>
 
-    <!-- 2. NAVBAR (Negro Suave con Menú Desplegable) -->
     <header class="main-header">
         <div class="logo">
             <span>Lab. Kelly Cabrera</span>
         </div>
 
-        <!-- Botón Hamburguesa para celulares -->
         <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
             ☰
         </button>
 
-        <!-- Menú de Navegación -->
         <nav class="nav-menu" id="nav-menu">
-            <a href="#inicio">Inicio</a>
-            <a href="#quienes-somos">Quiénes somos</a>
-            <a href="#testimonios">Testimonios</a>
-            <a href="#contacto" class="btn-nav">Contáctenos</a>
+            <a href="#inicio" id="nav-inicio">Inicio</a>
+            <a href="#quienes-somos" id="nav-quienes">Quiénes somos</a>
+            <a href="#testimonios" id="nav-testimonios">Testimonios</a>
+            <a href="#contacto" class="btn-nav" id="nav-contacto">Contáctenos</a>
         </nav>
     </header>
 
-<section class="hero" id="inicio">
+    <section class="hero" id="inicio">
         <div class="hero-container">
             <div class="hero-content">
-                <h1>Devolvemos la confianza a tu sonrisa con <span class="highlight">Prótesis de Alta Calidad</span></h1>
-                <p>Laboratorio de mecánica dental especializado en soluciones estéticas, duraderas y a la medida para odontólogos y pacientes.</p>
-                <a href="#contacto" class="btn-cta">Cotizar por WhatsApp ➔</a>
+                <h1 id="hero-title">Devolvemos la confianza a tu sonrisa con <span class="highlight">Prótesis de Alta Calidad</span></h1>
+                <p id="hero-desc">Laboratorio de mecánica dental especializado en soluciones estéticas, duraderas y a la medida para odontólogos y pacientes.</p>
+                <a href="https://wa.me/tu-numero-aqui" class="btn-cta" target="_blank" id="hero-btn">Cotizar por WhatsApp ➔</a>
             </div>
         </div>
     </section>
 
-    <!-- 4. Barra de Estadísticas -->
     <div class="stats-bar-container">
         <div class="stats-bar">
             <div class="stat-item">
-                <h3>+1000</h3>
-                <p>Sonrisas Diseñadas</p>
+                <h3 id="stat-1-num">+1000</h3>
+                <p id="stat-1-txt">Sonrisas Diseñadas</p>
             </div>
             <div class="divider"></div>
             <div class="stat-item">
-                <h3>100%</h3>
-                <p>Precisión Digital</p>
+                <h3 id="stat-2-num">100%</h3>
+                <p id="stat-2-txt">Precisión Digital</p>
             </div>
             <div class="divider"></div>
             <div class="stat-item">
-                <h3>Garantía</h3>
-                <p>En cada trabajo</p>
+                <h3 id="stat-3-num">Garantía</h3>
+                <p id="stat-3-txt">En cada trabajo</p>
             </div>
         </div>
     </div>
 
-    <!-- El enlace a tu lógica de JavaScript (Debe ir siempre aquí abajo) -->
     <script src="script.js"></script>
 </body>
 </html>

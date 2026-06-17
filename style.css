@@ -1,21 +1,21 @@
 /* ==========================================================================
-   VARIABLES DE COLOR - PALETA "GOLDEN GRASS" (Actualizada para Neutros Premium)
+   VARIABLES DE COLOR (Neutros Premium y Dorados de la Paleta Golden Grass)
    ========================================================================== */
 :root {
     --bg-light: #ffffff;         /* Fondo blanco general */
     --bg-subtle-cream: #FEFEE8;  /* Tono 50: Crema sutil para tarjetas */
     
-    /* NEUTROS PREMIUM (Negro oscuro pero no tanto) */
-    --bg-top-bar: #121212;       /* Negro ultra oscuro neutro para la barra de aviso superior */
-    --bg-navbar: #212121;        /* Antracita/Gris oscuro premium para la navbar */
+    /* NEUTROS PREMIUM (Negro oscuro, pero no tanto) */
+    --bg-top-bar: #121212;       /* Negro neutro profundo para la barra superior */
+    --bg-navbar: #212121;        /* Antracita elegante para la barra de navegación */
     
-    /* Dorados vibrantes y chillones (Los mantenemos porque se ven brutales) */
-    --gold-bright: #FEE811;      /* Tono 400: Dorado/Amarillo de alto impacto (El chillón) */
+    /* Dorados vibrantes y chillones */
+    --gold-bright: #FEE811;      /* Tono 400: Dorado chillón de alto impacto */
     --gold-primary: #EDCD05;     /* Tono 500: Balance brillante */
-    --gold-solid: #D5A701;       /* Tono 600: Oro corporativo (Tu marcador) */
+    --gold-solid: #D5A701;       /* Tono 600: Oro corporativo refinado */
     
-    --text-dark: #212121;        /* Usamos el neutro antracita para tipografía sobre blanco */
-    --text-muted: #555555;       /* Gris oscuro neutro para descripciones */
+    --text-dark: #212121;        /* Neutro antracita para tipografías sobre blanco */
+    --text-muted: #555555;       /* Gris oscuro para textos secundarios */
     --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -32,25 +32,50 @@ body {
     overflow-x: hidden;
 }
 
-/* --- 1. BARRA DE AVISO SUPERIOR (Negro Neutro muy oscuro) --- */
+/* --- 1. BARRA DE AVISO SUPERIOR (Selector de Idioma) --- */
 .top-bar {
-    background-color: var(--bg-top-bar); /* Aplicamos el negro neutro #121212 */
-    color: var(--gold-bright); /* Letras doradas bien chillonas */
-    text-align: center;
-    padding: 8px 15px;
+    background-color: var(--bg-top-bar);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 15px;
+}
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.lang-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
     font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 4px 8px;
     letter-spacing: 0.5px;
-    font-weight: 600;
+    transition: color 0.2s;
+}
+.lang-btn:hover {
+    color: #ffffff;
+}
+.lang-btn.active {
+    color: var(--gold-bright);
+    text-shadow: 0 0 8px rgba(254, 232, 17, 0.4);
+}
+.lang-divider {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 12px;
 }
 
-/* --- 2. NAVBAR (Negro "no tanto" #212121) --- */
+/* --- 2. NAVBAR E INTERACTIVIDAD MÓVIL --- */
 .main-header {
-    background-color: var(--bg-navbar); /* Aplicamos el antracita neutro */
+    background-color: var(--bg-navbar);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Línea divisoria neutra sutil */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     position: relative;
     z-index: 100;
 }
@@ -63,8 +88,6 @@ body {
 .logo span {
     color: var(--gold-bright);
 }
-
-/* Hamburguesa móvil */
 .menu-toggle {
     background: none;
     border: none;
@@ -73,12 +96,10 @@ body {
     cursor: pointer;
     display: block;
 }
-
-/* Menú desplegable móvil */
 .nav-menu {
     display: none; 
     flex-direction: column;
-    background-color: var(--bg-navbar); /* El menú abierto debe coincidir con la navbar */
+    background-color: var(--bg-navbar);
     position: absolute;
     top: 100%; 
     left: 0;
@@ -87,11 +108,9 @@ body {
     gap: 20px;
     box-shadow: 0 10px 15px rgba(0,0,0,0.3);
 }
-
 .nav-menu.active {
     display: flex !important;
 }
-
 .nav-menu a {
     color: #ffffff;
     text-decoration: none;
@@ -103,8 +122,6 @@ body {
 .nav-menu a:hover {
     color: var(--gold-bright);
 }
-
-/* Botón de contáctenos en móvil */
 .nav-menu a.btn-nav {
     color: var(--gold-bright);
     border: 1px solid var(--gold-bright);
@@ -113,9 +130,9 @@ body {
     text-align: center;
 }
 
-/* --- 3. HERO SECTION (Fondo de Imagen con Filtro Neutro) --- */
+/* --- 3. HERO SECTION (Imagen de Fondo Limpia con Capa Neutra) --- */
 .hero {
-    /* Aquí cambiamos el gradiente café por un NEUTRO sutil: negro semitransparente rgba(10,10,10,0.65) */
+    /* Gradiente negro neutro semitransparente sin rastro de color café */
     background: linear-gradient(rgba(10, 10, 10, 0.65), rgba(10, 10, 10, 0.65)), 
                 url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=1200') center/cover no-repeat;
     color: #ffffff;
@@ -136,20 +153,20 @@ body {
     color: #ffffff;
 }
 .hero-content .highlight {
-    color: var(--gold-bright); /* El oro chilla aún más contra un fondo neutro */
+    color: var(--gold-bright);
     text-shadow: 0 2px 10px rgba(254, 232, 17, 0.3);
 }
 .hero-content p {
-    color: #FEFEE8; /* Texto claro (Crema sutil 50) */
+    color: #FEFEE8;
     font-size: 16px;
     line-height: 1.6;
     margin-bottom: 30px;
-    opacity: 0.95; /* Ligeramente más opaco para mayor legibilidad */
+    opacity: 0.95;
 }
 .btn-cta {
     display: inline-block;
-    background-color: var(--gold-bright); /* Botón súper chillón */
-    color: #000000; /* Texto oscuro para legibilidad */
+    background-color: var(--gold-bright);
+    color: #000000;
     text-decoration: none;
     font-weight: bold;
     padding: 14px 28px;
@@ -163,7 +180,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* --- 4. BARRA DE ESTADÍSTICAS (Integrada a la paleta - Se mantiene igual) --- */
+/* --- 4. BARRA DE ESTADÍSTICAS --- */
 .stats-bar-container {
     padding: 0 20px;
     margin-top: -30px; 
@@ -172,15 +189,15 @@ body {
     z-index: 10;
 }
 .stats-bar {
-    background-color: var(--bg-subtle-cream); /* Tono 50: Crema elegante */
-    border: 1px solid rgba(213, 167, 1, 0.3); /* Contorno oro sólido 600 */
+    background-color: var(--bg-subtle-cream);
+    border: 1px solid rgba(213, 167, 1, 0.3);
     border-radius: 12px;
     padding: 20px 15px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(67, 38, 5, 0.08);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 .stat-item {
     padding: 5px;
@@ -189,13 +206,13 @@ body {
     grid-column: span 2;
 }
 .stat-item h3 {
-    color: var(--gold-solid); /* Oro corporativo 600 */
+    color: var(--gold-solid);
     font-size: 26px;
     font-weight: 700;
     margin-bottom: 2px;
 }
 .stat-item p {
-    color: var(--bg-navbar); /* Texto en antracita neutro #212121 */
+    color: var(--bg-navbar);
     font-size: 13px;
     font-weight: 600;
 }
@@ -204,10 +221,15 @@ body {
 }
 
 /* ==========================================================================
-   5. MEDIA QUERIES (Para Computadoras - Actualizada)
+   5. MEDIA QUERIES (Para Computadoras)
    ========================================================================== */
 @media (min-width: 768px) {
     
+    .top-bar {
+        justify-content: flex-end;
+        padding-right: 40px;
+    }
+
     .menu-toggle {
         display: none;
     }
@@ -239,7 +261,6 @@ body {
         border-radius: 5px;
     }
 
-    /* Rediseño Hero en PC (Mantenemos centrado, más imponente) */
     .hero {
         padding: 120px 40px 140px 40px;
     }
@@ -252,7 +273,6 @@ body {
         margin: 0 auto 35px auto;
     }
 
-    /* Estadísticas en PC (Actualizamos el color de la línea) */
     .stats-bar {
         display: flex;
         flex-direction: row;
@@ -266,7 +286,7 @@ body {
         width: 1px;
         height: 40px;
         margin: 0;
-        background-color: rgba(213, 167, 1, 0.2); /* Divisor sutil dorado */
+        background-color: rgba(213, 167, 1, 0.2);
     }
     .stat-item:nth-child(5) {
         grid-column: auto;
