@@ -1,11 +1,13 @@
-/* --- VARIABLES DE COLOR (Predominante Blanco, Negro y Dorado) --- */
+/* ==========================================================================
+   VARIABLES DE COLOR (Predominante Blanco, Negro Suave y Detalles en Oro)
+   ========================================================================== */
 :root {
-    --bg-light: #ffffff;       /* Blanco puro para el fondo principal */
-    --bg-top-bar: #1a1a1a;     /* Negro suave para la barra de aviso superior */
-    --bg-navbar: #262626;      /* El negro "no tan oscuro" (antracita elegante) para la navbar */
-    --accent-gold: #b8922f;    /* Dorado premium */
+    --bg-light: #ffffff;       /* Blanco puro para el fondo general */
+    --bg-top-bar: #1a1a1a;     /* Negro muy suave para el aviso de arriba */
+    --bg-navbar: #262626;      /* Gris oscuro premium (antracita) para la navbar */
+    --accent-gold: #b8922f;    /* Dorado premium refinado */
     --text-dark: #1a1a1a;      /* Negro suave para los textos principales */
-    --text-muted: #555555;     /* Gris oscuro para las descripciones */
+    --text-muted: #555555;     /* Gris oscuro para párrafos informativos */
     --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -32,7 +34,7 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* --- 2. NAVBAR (Negro Suave e Interactiva) --- */
+/* --- 2. NAVBAR E INTERACTIVIDAD EN MÓVIL --- */
 .main-header {
     background-color: var(--bg-navbar);
     display: flex;
@@ -40,7 +42,7 @@ body {
     align-items: center;
     padding: 15px 20px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    position: relative; /* Importante para posicionar el menú desplegable */
+    position: relative;
     z-index: 100;
 }
 .logo {
@@ -52,23 +54,23 @@ body {
     color: var(--accent-gold);
 }
 
-/* Estilos para el botón de tres rayitas en celular */
+/* Botón Hamburguesa móvil */
 .menu-toggle {
     background: none;
     border: none;
     color: #ffffff;
     font-size: 26px;
     cursor: pointer;
-    display: block; /* Visible en celular */
+    display: block; /* Visible por defecto en celular */
 }
 
-/* Menú en Móvil: Se posiciona de forma absoluta debajo de la navbar */
+/* Menú oculto abajo de la barra por defecto en móvil */
 .nav-menu {
-    display: none; /* Oculto por defecto en celular */
+    display: none; 
     flex-direction: column;
     background-color: var(--bg-navbar);
     position: absolute;
-    top: 100%; /* Justo abajo de la barra principal */
+    top: 100%; 
     left: 0;
     width: 100%;
     padding: 20px;
@@ -77,9 +79,9 @@ body {
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Clase especial que añadiremos con JavaScript para MOSTRAR el menú */
+/* Clase inyectada por JS para activar el despliegue */
 .nav-menu.active {
-    display: flex;
+    display: flex !important;
 }
 
 .nav-menu a {
@@ -88,12 +90,13 @@ body {
     font-size: 16px;
     font-weight: 500;
     padding: 5px 0;
+    transition: color 0.2s;
 }
 .nav-menu a:hover {
     color: var(--accent-gold);
 }
 
-/* Estilo especial para tu botón de "Contáctenos" */
+/* Botón de contáctenos adaptado para el menú móvil */
 .nav-menu a.btn-nav {
     color: var(--accent-gold);
     border: 1px solid var(--accent-gold);
@@ -102,29 +105,7 @@ body {
     text-align: center;
 }
 
-.logo {
-    color: #ffffff; /* Letras blancas para que resalten sobre el fondo oscuro */
-    font-weight: bold;
-    font-size: 18px;
-}
-.logo span {
-    color: var(--accent-gold);
-}
-.nav-menu a {
-    display: none; /* Ocultos en móvil */
-}
-.nav-menu a.btn-nav {
-    display: inline-block;
-    color: var(--accent-gold); /* El botón de contactar ahora resalta en dorado */
-    text-decoration: none;
-    border: 1px solid var(--accent-gold);
-    padding: 6px 12px;
-    border-radius: 5px;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-/* --- 3. HERO SECTION (Fondo Blanco en Celular) --- */
+/* --- 3. HERO SECTION (Fondo Blanco Limpio) --- */
 .hero {
     background-color: var(--bg-light);
     color: var(--text-dark);
@@ -143,7 +124,7 @@ body {
     color: var(--text-dark);
 }
 .hero-content .highlight {
-    color: var(--accent-gold); /* El texto resaltado va en dorado */
+    color: var(--accent-gold);
 }
 .hero-content p {
     color: var(--text-muted);
@@ -154,7 +135,7 @@ body {
 .btn-cta {
     display: inline-block;
     background-color: var(--accent-gold);
-    color: #ffffff; /* Texto blanco sobre el botón dorado */
+    color: #ffffff;
     text-decoration: none;
     font-weight: bold;
     padding: 14px 28px;
@@ -169,10 +150,10 @@ body {
     max-width: 320px;
     height: auto;
     border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05); /* Sombra suave para la foto */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
-/* --- 4. BARRA DE ESTADÍSTICAS (Elegante sobre fondo blanco) --- */
+/* --- 4. BARRA DE ESTADÍSTICAS (Grid Compacto para Móvil) --- */
 .stats-bar-container {
     padding: 0 20px;
     margin-top: -10px; 
@@ -181,7 +162,7 @@ body {
     z-index: 10;
 }
 .stats-bar {
-    background-color: #fafafa; /* Un gris casi blanco muy limpio */
+    background-color: #fafafa; /* Fondo gris minimalista muy sutil */
     border: 1px solid #e2e8f0;
     border-radius: 12px;
     padding: 20px 15px;
@@ -189,13 +170,13 @@ body {
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
     text-align: center;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
 }
 .stat-item {
     padding: 5px;
 }
 .stat-item:nth-child(5) {
-    grid-column: span 2; /* Centra el tercer dato abajo en móvil */
+    grid-column: span 2; /* Centra el tercer elemento abajo en móviles */
 }
 .stat-item h3 {
     color: var(--accent-gold);
@@ -208,49 +189,37 @@ body {
     font-weight: 500;
 }
 .stats-bar .divider {
-    display: none;
+    display: none; /* Escondidos en celular */
 }
 
-
 /* ==========================================================================
-   5. MEDIA QUERIES (Para Computadora - Todo Unificado y Optimizado)
+   5. MEDIA QUERIES (Para Computadoras y Pantallas Grandes)
    ========================================================================== */
 @media (min-width: 768px) {
     
-    /* Ocultamos el botón de hamburguesa (☰) en pantallas grandes */
     .menu-toggle {
-        display: none;
+        display: none; /* Se oculta la hamburguesa */
     }
 
-    /* Mostramos el menú horizontal normal en PC */
     .nav-menu {
         display: flex;
         flex-direction: row;
-        position: static;    /* Quita el posicionamiento absoluto del celular */
+        position: static; /* Quita el comportamiento móvil */
         width: auto;
         padding: 0;
         gap: 0;
         box-shadow: none;
         border-top: none;
-        background-color: transparent; /* Evita que pise el fondo de la navbar */
+        background-color: transparent;
     }
 
-    /* Enlaces del menú en blanco para que resalten sobre la navbar negra suave */
     .nav-menu a {
-        display: inline-block;
         color: #ffffff; 
-        text-decoration: none;
         margin-left: 25px;
         font-size: 15px;
-        font-weight: 500;
-        transition: color 0.2s;
+        padding: 0;
     }
 
-    .nav-menu a:hover {
-        color: var(--accent-gold); /* Efecto hover dorado */
-    }
-
-    /* Ajuste para el botón de "Contáctenos" dentro del menú en PC */
     .nav-menu a.btn-nav {
         color: var(--accent-gold);
         border: 1px solid var(--accent-gold);
@@ -259,38 +228,33 @@ body {
         text-align: left;
     }
 
-    /* --- HERO SECTION EN PC (Dos columnas: Texto izquierda, Foto derecha) --- */
+    /* Estructura del Hero en PC (Lado a Lado) */
     .hero {
         padding: 60px 40px 80px 40px;
         text-align: left;
     }
-
     .hero-container {
         flex-direction: row;
         align-items: center;
         max-width: 1100px;
         margin: 0 auto;
     }
-
     .hero-content {
         flex: 1;
     }
-
     .hero-image {
         flex: 1;
         display: flex;
         justify-content: flex-end;
     }
-
     .hero-image img {
         max-width: 420px;
     }
-
     .btn-cta {
-        width: auto; /* El botón de WhatsApp ya no ocupa todo el ancho de la pantalla */
+        width: auto;
     }
 
-    /* --- BARRA DE ESTADÍSTICAS EN PC (Horizontal y Limpia) --- */
+    /* Estructura de Estadísticas en PC (Horizontal) */
     .stats-bar {
         display: flex;
         flex-direction: row;
@@ -299,17 +263,13 @@ body {
         margin: 0 auto;
         padding: 25px;
     }
-
-    /* Volvemos a mostrar las líneas divisorias entre datos en PC */
     .stats-bar .divider {
-        display: block;
+        display: block; /* Líneas separadoras visibles */
         width: 1px;
         height: 40px;
         margin: 0;
-        background-color: rgba(212, 175, 55, 0.2); /* Divisor sutil dorado */
+        background-color: #e2e8f0;
     }
-
-    /* Quitamos el comportamiento de cuadrícula móvil al último elemento */
     .stat-item:nth-child(5) {
         grid-column: auto;
     }
