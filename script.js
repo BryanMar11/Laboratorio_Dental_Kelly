@@ -32,10 +32,8 @@ const translations = {
         heroBtn: "Cotizar por WhatsApp ➔",
         stat1Num: "+1000",
         stat1Txt: "Sonrisas Diseñadas",
-        stat2Num: "100%",
-        stat2Txt: "Precisión Digital",
-        stat3Num: "Garantía",
-        stat3Txt: "En cada trabajo"
+        stat2Num: "15+",
+        stat2Txt: "Procedimientos Especializados"
     },
     en: {
         navInicio: "Home",
@@ -47,10 +45,8 @@ const translations = {
         heroBtn: "Quote via WhatsApp ➔",
         stat1Num: "+1000",
         stat1Txt: "Designed Smiles",
-        stat2Num: "100%",
-        stat2Txt: "Digital Precision",
-        stat3Num: "Warranty",
-        stat3Txt: "On every piece"
+        stat2Num: "15+",
+        stat2Txt: "Specialized Procedures"
     }
 };
 
@@ -70,8 +66,6 @@ function changeLanguage(lang) {
     document.getElementById('stat-1-txt').textContent = translations[lang].stat1Txt;
     document.getElementById('stat-2-num').textContent = translations[lang].stat2Num;
     document.getElementById('stat-2-txt').textContent = translations[lang].stat2Txt;
-    document.getElementById('stat-3-num').textContent = translations[lang].stat3Num;
-    document.getElementById('stat-3-txt').textContent = translations[lang].stat3Txt;
 
     // Controla cuál botón del selector de idiomas se ilumina como activo
     document.getElementById('btn-es').classList.remove('active');

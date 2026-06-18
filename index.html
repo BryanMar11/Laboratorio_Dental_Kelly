@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laboratorio Dental Kelly Cabrera</title>
+    <!-- Favicon temporal usando un emoji de diente -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦷</text></svg>">
+    <!-- Enlace al archivo CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- 1. BARRA DE AVISO SUPERIOR (Selector de Idioma) -->
     <div class="top-bar">
         <div class="lang-switcher">
             <button class="lang-btn active" id="btn-es" onclick="changeLanguage('es')">ES</button>
@@ -17,15 +20,18 @@
         </div>
     </div>
 
+    <!-- 2. NAVBAR (Negro Antracita con Menú Desplegable) -->
     <header class="main-header">
         <div class="logo">
             <span>Lab. Kelly Cabrera</span>
         </div>
 
+        <!-- Botón Hamburguesa para celulares -->
         <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
             ☰
         </button>
 
+        <!-- Menú de Navegación -->
         <nav class="nav-menu" id="nav-menu">
             <a href="#inicio" id="nav-inicio">Inicio</a>
             <a href="#quienes-somos" id="nav-quienes">Quiénes somos</a>
@@ -34,6 +40,7 @@
         </nav>
     </header>
 
+    <!-- 3. SECCIÓN HERO PRINCIPAL (Fondo de Imagen Inmersivo con Filtro Neutro) -->
     <section class="hero" id="inicio">
         <div class="hero-container">
             <div class="hero-content">
@@ -44,6 +51,7 @@
         </div>
     </section>
 
+    <!-- 4. BARRA DE ESTADÍSTICAS (2 Columnas Simétricas con Animación de Rebote) -->
     <div class="stats-bar-container">
         <div class="stats-bar">
             <div class="stat-item">
@@ -52,17 +60,13 @@
             </div>
             <div class="divider"></div>
             <div class="stat-item">
-                <h3 id="stat-2-num">100%</h3>
-                <p id="stat-2-txt">Precisión Digital</p>
-            </div>
-            <div class="divider"></div>
-            <div class="stat-item">
-                <h3 id="stat-3-num">Garantía</h3>
-                <p id="stat-3-txt">En cada trabajo</p>
+                <h3 id="stat-2-num">15+</h3>
+                <p id="stat-2-txt">Procedimientos Especializados</p>
             </div>
         </div>
     </div>
 
+    <!-- Enlace a la lógica de JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
