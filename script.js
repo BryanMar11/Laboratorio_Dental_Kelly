@@ -19,7 +19,43 @@ navLinks.forEach(link => {
 
 
 // ==========================================================================
-// 2. LÓGICA DEL TRADUCTOR DINÁMICO (Español / Inglés)
+// 2. NUEVO: ANIMACIÓN DE REVELADO AL SCROLL (Intersection Observer)
+// ==========================================================================
+// Seleccionamos la barra de estadísticas
+const statsBar = document.querySelector('.stats-bar');
+
+// Definimos la función que se ejecuta cuando el elemento entra en pantalla
+const revealOnScrollCallback = (entries, observer) => {
+    entries.forEach((entry) => {
+        // ¿El elemento está entrando en el viewport?
+        if (entry.isIntersecting) {
+            // Le añadimos la clase de CSS que activa la animación suave
+            statsBar.classList.add('visible');
+            
+            // Ya no necesitamos vigilarlo más, así ahorramos recursos
+            observer.unobserve(entry.target);
+        }
+    });
+};
+
+// Configuramos las opciones del observador
+const revealOptions = {
+    root: null,        // Usa el viewport del navegador
+    threshold: 0.2    // Se activa cuando el 20% del elemento es visible
+};
+
+// Creamos el observador con la función y opciones anteriores
+const observer = new IntersectionObserver(revealOnScrollCallback, revealOptions);
+
+// Ponemos al observador a vigilar el contenedor principal de la barra
+const statsSection = document.getElementById('stats-section');
+if (statsSection) {
+    observer.observe(statsSection);
+}
+
+
+// ==========================================================================
+// 3. LÓGICA DEL TRADUCTOR DINÁMICO (Español / Inglés)
 // ==========================================================================
 const translations = {
     es: {

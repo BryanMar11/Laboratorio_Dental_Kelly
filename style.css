@@ -179,7 +179,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* --- 4. BARRA DE ESTADÍSTICAS (Layout Lado a Lado + Animación Rebote) --- */
+/* --- 4. BARRA DE ESTADÍSTICAS (Layout Lado a Lado + Animación Scroll) --- */
 .stats-bar-container {
     padding: 0 20px;
     margin-top: -35px; 
@@ -187,41 +187,36 @@ body {
     position: relative;
     z-index: 10;
 }
+
 .stats-bar {
     background-color: var(--bg-subtle-cream);
     border: 1px solid rgba(213, 167, 1, 0.25);
     border-radius: 16px;
     padding: 20px 10px;
     display: flex;
-    flex-direction: row; /* Forzar uno al lado del otro en cualquier pantalla */
+    flex-direction: row; /* Forzar uno al lado del otro */
     justify-content: space-around;
     align-items: center;
     text-align: center;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06), 0 5px 15px rgba(0, 0, 0, 0.02);
-    max-width: 550px; /* Tamaño ideal y controlado para 2 elementos */
+    max-width: 550px; /* Tamaño controlado para 2 elementos */
     margin: 0 auto;
+
+    /* --- NUEVO: ESTADO INICIAL (Oculto) --- */
+    opacity: 0;                /* Invisible */
+    transform: translateY(30px); /* Movido un poco hacia abajo */
+    
+    /* Definimos la transición: tiempo y suavizado */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-/* Disparador de la animación de rebote */
-.stats-bar:hover {
-    animation: bouncePlayful 0.6s ease-in-out;
+/* --- NUEVO: ESTADO FINAL (Visible - Activado por JS) --- */
+.stats-bar.visible {
+    opacity: 1;                /* Totalmente visible */
+    transform: translateY(0);    /* Regresa a su posición original */
 }
 
-/* Keyframes de la animación de rebote dinámico */
-@keyframes bouncePlayful {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    30% {
-        transform: translateY(-12px); /* Primer gran salto */
-    }
-    50% {
-        transform: translateY(0);
-    }
-    70% {
-        transform: translateY(-5px);  /* Rebote pequeño residual */
-    }
-}
+/* Eliminamos la animación de rebote residual */
 
 .stat-item {
     flex: 1;
