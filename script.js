@@ -1,3 +1,15 @@
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    
+    // Espera mínima de 2.5 segundos para que se vea el logo
+    setTimeout(() => {
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 1000); // Tiempo para quitarlo del DOM
+    }, 2500);
+});
+
 // ==========================================================================
 // 1. LÓGICA DEL MENÚ DESPLEGABLE MÓVIL
 // ==========================================================================
@@ -6,12 +18,15 @@ const navMenu = document.getElementById('nav-menu');
 
 menuToggle.addEventListener('click', () => {
     navMenu.classList.toggle('active');
+    menuToggle.classList.toggle('active'); // <--- AGREGA ESTA LÍNEA
 });
 
+// Para cerrar el menú al hacer clic en un enlace (ya lo tenías)
 const navLinks = document.querySelectorAll('.nav-menu a');
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
         navMenu.classList.remove('active');
+        menuToggle.classList.remove('active'); // <--- AGREGA ESTA TAMBIÉN
     });
 });
 

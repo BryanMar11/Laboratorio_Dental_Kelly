@@ -6,6 +6,15 @@
     <title>Lab. Kelly Cabrera | Laboratorio Dental</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
+<!-- Pantalla de Carga -->
+<div id="preloader">
+    <div class="logo-loader">
+        <img src="img/logo.jpeg" alt="Logo Kelly Cabrera">
+        <div class="line-loading"></div>
+    </div>
+</div>
+
 <body>
 
     <div class="top-bar">
@@ -16,18 +25,25 @@
         </div>
     </div>
 
-    <header class="main-header">
+<header class="main-header">
         <a href="#inicio" class="logo-creative">
             <div class="brand-name">Kelly Cabrera</div>
             <div class="brand-tagline">LABORATORIO DENTAL</div>
         </a>
-        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">☰</button>
+
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        
         <nav class="nav-menu" id="nav-menu">
-            <a href="#inicio" id="nav-inicio">Inicio</a>
-            <a href="#procedimientos" id="nav-procedimientos">Procedimientos</a>
-            <a href="#testimonios" id="nav-testimonios">Testimonios</a>
-            <a href="#contacto" class="btn-nav" id="nav-contacto">Contáctenos</a>
+        <a href="#inicio" id="nav-inicio">Inicio</a>
+        <a href="#procedimientos" id="nav-procedimientos">Procedimientos</a>
+        <a href="#sobre-mi" id="nav-sobre-mi">Sobre Mí</a> <a href="#testimonios" id="nav-testimonios">Testimonios</a>
+        <a href="#contacto" class="btn-nav" id="nav-contacto">Contáctenos</a>
         </nav>
+
     </header>
 
     <section id="inicio" class="hero hidden-scroll">
@@ -62,6 +78,15 @@
     <section id="procedimientos" class="procedures-section hidden-scroll">
         <h2 class="section-title">Nuestros Servicios</h2>
         </section>
+
+    <section id="sobre-mi" class="about-section hidden-scroll">
+    <div class="about-container">
+        <h2 class="section-title">Sobre Mí</h2>
+        <div class="about-content">
+            <p>Aquí puedes contar tu historia, tu trayectoria en el laboratorio y qué te apasiona de la odontología. Una breve descripción personal ayuda mucho a generar confianza con los clientes.</p>
+        </div>
+    </div>
+</section>
 
     <script src="script.js"></script>
 </body>
