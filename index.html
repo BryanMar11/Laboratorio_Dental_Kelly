@@ -17,22 +17,17 @@
         </div>
     </div>
 
-    <header class="main-header">
-        <div class="logo">
-            <span>Lab. Kelly Cabrera</span>
-        </div>
-
-        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
-            ☰
-        </button>
-
-        <nav class="nav-menu" id="nav-menu">
-            <a href="#inicio" id="nav-inicio">Inicio</a>
-            <a href="#quienes-somos" id="nav-quienes">Quiénes somos</a>
-            <a href="#testimonios" id="nav-testimonios">Testimonios</a>
-            <a href="#contacto" class="btn-nav" id="nav-contacto">Contáctenos</a>
+<header class="main-header">
+    <div class="logo">
+        <a href="#inicio">
+            <img src="img/logo.jpeg" alt="Logo Lab Kelly Cabrera" class="logo-img">
+        </a>
+    </div>
+    
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">☰</button>
+    <nav class="nav-menu" id="nav-menu">
         </nav>
-    </header>
+</header>
 
     <section class="hero" id="inicio">
         <div class="hero-container">
@@ -44,8 +39,8 @@
         </div>
     </section>
 
-    <div class="stats-bar-container" id="stats-section">
-        <div class="stats-bar">
+    <div class="stats-bar-container">
+        <div class="stats-bar hidden-scroll">
             <div class="stat-item">
                 <h3 id="stat-1-num">+1000</h3>
                 <p id="stat-1-txt">Sonrisas Diseñadas</p>
@@ -57,6 +52,60 @@
             </div>
         </div>
     </div>
+
+    <section class="procedures-section" id="procedimientos">
+        <h2 class="section-title" id="proc-main-title">Especialidades del Laboratorio</h2>
+        
+        <div class="procedures-grid">
+            <div class="procedure-card hidden-scroll">
+                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=600" alt="Prótesis Fijas">
+                <div class="card-content">
+                    <h4 id="proc-1-title">Coronas y Puentes</h4>
+                    <span class="card-link" id="proc-1-link">Ver detalles ➔</span>
+                </div>
+            </div>
+
+            <div class="procedure-card hidden-scroll">
+                <img src="https://images.unsplash.com/photo-1598256989800-fea5f3cdd411?q=80&w=600" alt="Prótesis Removibles">
+                <div class="card-content">
+                    <h4 id="proc-2-title">Prótesis Removibles</h4>
+                    <span class="card-link" id="proc-2-link">Ver detalles ➔</span>
+                </div>
+            </div>
+
+            <div class="procedure-card hidden-scroll">
+                <img src="https://plus.unsplash.com/premium_photo-1664302152996-322114792b38?q=80&w=600" alt="Carillas Estéticas">
+                <div class="card-content">
+                    <h4 id="proc-3-title">Carillas (Zirconio / Disilicato)</h4>
+                    <span class="card-link" id="proc-3-link">Ver detalles ➔</span>
+                </div>
+            </div>
+
+            <div class="procedure-card hidden-scroll">
+                <img src="https://images.unsplash.com/photo-1579728469853-29474dd7c62c?q=80&w=600" alt="Implantes">
+                <div class="card-content">
+                    <h4 id="proc-4-title">Estructuras sobre Implantes</h4>
+                    <span class="card-link" id="proc-4-link">Ver detalles ➔</span>
+                </div>
+            </div>
+
+            <div class="procedure-card hidden-scroll">
+                <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=600" alt="Férulas">
+                <div class="card-content">
+                    <h4 id="proc-5-title">Placas y Férulas de Bruxismo</h4>
+                    <span class="card-link" id="proc-5-link">Ver detalles ➔</span>
+                </div>
+            </div>
+
+            <div class="procedure-card hidden-scroll">
+                <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?q=80&w=600" alt="Aparatología">
+                <div class="card-content">
+                    <h4 id="proc-6-title">Aparatología Ortodóntica</h4>
+                    <span class="card-link" id="proc-6-link">Ver detalles ➔</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script src="script.js"></script>
 </body>
