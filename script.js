@@ -16,17 +16,14 @@ navLinks.forEach(link => {
 });
 
 // ==========================================================================
-// 2. ANIMACIÓN DE REVELADO AL SCROLL (Intersection Observer Mejorado)
+// 2. ANIMACIÓN DE REVELADO AL SCROLL (Intersection Observer)
 // ==========================================================================
-// Seleccionamos TODOS los elementos que tengan la clase 'hidden-scroll'
 const scrollElements = document.querySelectorAll('.hidden-scroll');
 
 const revealOnScrollCallback = (entries, observer) => {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
-            // Añade la clase visible cuando el elemento entra en pantalla
             entry.target.classList.add('visible');
-            // Deja de observarlo para no consumir memoria
             observer.unobserve(entry.target);
         }
     });
@@ -34,12 +31,11 @@ const revealOnScrollCallback = (entries, observer) => {
 
 const revealOptions = {
     root: null,
-    threshold: 0.15 // Se activa cuando el 15% de la tarjeta es visible
+    threshold: 0.15 
 };
 
 const observer = new IntersectionObserver(revealOnScrollCallback, revealOptions);
 
-// Le decimos al observador que vigile cada elemento individualmente
 scrollElements.forEach(el => observer.observe(el));
 
 // ==========================================================================
@@ -59,14 +55,7 @@ const translations = {
         stat2Num: "15+",
         stat2Txt: "Procedimientos Especializados",
         
-        // Textos de la nueva sección
         procMainTitle: "Especialidades del Laboratorio",
-        proc1Title: "Coronas y Puentes",
-        proc2Title: "Prótesis Removibles",
-        proc3Title: "Carillas (Zirconio / Disilicato)",
-        proc4Title: "Estructuras sobre Implantes",
-        proc5Title: "Placas y Férulas de Bruxismo",
-        proc6Title: "Aparatología Ortodóntica",
         procLink: "Ver detalles ➔"
     },
     en: {
@@ -82,41 +71,31 @@ const translations = {
         stat2Num: "15+",
         stat2Txt: "Specialized Procedures",
         
-        // Textos de la nueva sección en inglés
         procMainTitle: "Laboratory Specialties",
-        proc1Title: "Crowns and Bridges",
-        proc2Title: "Removable Prosthetics",
-        proc3Title: "Veneers (Zirconia / Disilicate)",
-        proc4Title: "Implant Structures",
-        proc5Title: "Occlusal Splints & Night Guards",
-        proc6Title: "Orthodontic Appliances",
         procLink: "View details ➔"
     }
 };
 
 function changeLanguage(lang) {
+    // Menú
     document.getElementById('nav-inicio').textContent = translations[lang].navInicio;
     document.getElementById('nav-procedimientos').textContent = translations[lang].navProcedimientos;
     document.getElementById('nav-testimonios').textContent = translations[lang].navTestimonios;
     document.getElementById('nav-contacto').textContent = translations[lang].navContacto;
     
+    // Hero
     document.getElementById('hero-title').innerHTML = translations[lang].heroTitle; 
     document.getElementById('hero-desc').textContent = translations[lang].heroDesc;
     document.getElementById('hero-btn').textContent = translations[lang].heroBtn;
     
+    // Stats
     document.getElementById('stat-1-num').textContent = translations[lang].stat1Num;
     document.getElementById('stat-1-txt').textContent = translations[lang].stat1Txt;
     document.getElementById('stat-2-num').textContent = translations[lang].stat2Num;
     document.getElementById('stat-2-txt').textContent = translations[lang].stat2Txt;
 
-    // Traducir los nuevos elementos de la sección procedimientos
+    // Sección Procedimientos
     document.getElementById('proc-main-title').textContent = translations[lang].procMainTitle;
-    document.getElementById('proc-1-title').textContent = translations[lang].proc1Title;
-    document.getElementById('proc-2-title').textContent = translations[lang].proc2Title;
-    document.getElementById('proc-3-title').textContent = translations[lang].proc3Title;
-    document.getElementById('proc-4-title').textContent = translations[lang].proc4Title;
-    document.getElementById('proc-5-title').textContent = translations[lang].proc5Title;
-    document.getElementById('proc-6-title').textContent = translations[lang].proc6Title;
 
     // Actualizar todos los enlaces de "Ver detalles"
     const links = document.querySelectorAll('.card-link');
@@ -124,6 +103,7 @@ function changeLanguage(lang) {
         link.textContent = translations[lang].procLink;
     });
 
+    // Toggle clase active en botones (asegúrate de que los IDs coincidan en el HTML)
     document.getElementById('btn-es').classList.remove('active');
     document.getElementById('btn-en').classList.remove('active');
     document.getElementById(`btn-${lang}`).classList.add('active');

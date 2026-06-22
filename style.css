@@ -190,7 +190,9 @@ body {
    3. HERO SECTION (PORTADA PRINCIPAL)
    ========================================================================== */
 .hero { 
-    background: linear-gradient(rgba(10, 10, 10, 0.65), rgba(10, 10, 10, 0.65)), url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=1200') center/cover no-repeat; 
+    /* La ruta correcta si la imagen está en la carpeta 'img' */
+    background: linear-gradient(rgba(10, 10, 10, 0.65), rgba(10, 10, 10, 0.65)), 
+                url('img/Fondo2.jpeg') center/cover no-repeat; 
     color: #ffffff; 
     padding: 80px 20px 100px 20px; 
     text-align: center; 
@@ -332,11 +334,13 @@ body {
 .procedure-card {
     position: relative;
     height: 260px;
-    border-radius: 12px;
-    overflow: hidden;
+    border-radius: 12px; /* Esto redondea las esquinas nativamente */
+    overflow: hidden;    /* Esto es lo que corta la imagen para que no se salga */
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     cursor: pointer;
-    -webkit-mask-image: -webkit-radial-gradient(white, black); 
+    /* Eliminamos el -webkit-mask-image por completo */
+    /* Usamos la propiedad estándar de transformación para asegurar el corte */
+    transform: translateZ(0); 
 }
 
 .procedure-card img {
@@ -441,3 +445,4 @@ body {
     .procedure-card { height: 300px; }
     .card-content h4 { font-size: 24px; }
 }
+
