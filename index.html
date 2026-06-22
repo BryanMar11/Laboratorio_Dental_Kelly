@@ -3,110 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laboratorio Dental Kelly Cabrera</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦷</text></svg>">
+    <title>Lab. Kelly Cabrera | Laboratorio Dental</title>
+    <!-- Enlace a tu archivo CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- 1. BARRA SUPERIOR (Idiomas) -->
     <div class="top-bar">
         <div class="lang-switcher">
-            <button class="lang-btn active" id="btn-es" onclick="changeLanguage('es')">ES</button>
+            <button class="lang-btn active">ES</button>
             <span class="lang-divider">|</span>
-            <button class="lang-btn" id="btn-en" onclick="changeLanguage('en')">EN</button>
+            <button class="lang-btn">EN</button>
         </div>
     </div>
 
-<header class="main-header">
-    <div class="logo">
-        <a href="#inicio">
-            <img src="img/logo.jpeg" alt="Logo Lab Kelly Cabrera" class="logo-img">
+    <!-- 2. BARRA DE NAVEGACIÓN (Header) -->
+    <header class="main-header">
+        
+        <!-- === NUEVO LOGO TIPOGRÁFICO CREATIVO === -->
+        <a href="#inicio" class="logo-creative">
+            <div class="brand-name">Kelly Cabrera</div>
+            <div class="brand-tagline">LABORATORIO DENTAL</div>
         </a>
-    </div>
-    
-    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">☰</button>
-    <nav class="nav-menu" id="nav-menu">
-        </nav>
-</header>
 
-    <section class="hero" id="inicio">
+        <!-- Botón Hamburguesa (Móviles) -->
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">☰</button>
+        
+        <!-- Menú de Enlaces -->
+        <nav class="nav-menu" id="nav-menu">
+            <a href="#inicio" id="nav-inicio">Inicio</a>
+            <a href="#procedimientos" id="nav-procedimientos">Procedimientos</a>
+            <a href="#testimonios" id="nav-testimonios">Testimonios</a>
+            <a href="#contacto" class="btn-nav" id="nav-contacto">Contáctenos</a>
+        </nav>
+    </header>
+
+    <!-- 3. SECCIÓN HERO (Portada principal) -->
+    <section id="inicio" class="hero hidden-scroll">
         <div class="hero-container">
             <div class="hero-content">
-                <h1 id="hero-title">Devolvemos la confianza a tu sonrisa con <span class="highlight">Prótesis de Alta Calidad</span></h1>
-                <p id="hero-desc">Laboratorio de mecánica dental especializado en soluciones estéticas, duraderas y a la medida para odontólogos y pacientes.</p>
-                <a href="https://wa.me/tu-numero-aqui" class="btn-cta" target="_blank" id="hero-btn">Cotizar por WhatsApp ➔</a>
+                <h1>Devolvemos la confianza a tu sonrisa con <span class="highlight">Prótesis de Alta Calidad</span></h1>
+                <p>Especialistas en estética dental y rehabilitación oral. Tecnología de punta y precisión en cada detalle para resultados naturales.</p>
+                <a href="#contacto" class="btn-cta">Agendar Consulta</a>
             </div>
         </div>
     </section>
 
-    <div class="stats-bar-container">
-        <div class="stats-bar hidden-scroll">
+    <!-- 4. BARRA DE ESTADÍSTICAS -->
+    <div class="stats-bar-container hidden-scroll">
+        <div class="stats-bar">
             <div class="stat-item">
-                <h3 id="stat-1-num">+1000</h3>
-                <p id="stat-1-txt">Sonrisas Diseñadas</p>
+                <h3>+15</h3>
+                <p>Años de<br>Experiencia</p>
             </div>
             <div class="divider"></div>
             <div class="stat-item">
-                <h3 id="stat-2-num">15+</h3>
-                <p id="stat-2-txt">Procedimientos Especializados</p>
+                <h3>+5k</h3>
+                <p>Sonrisas<br>Restauradas</p>
+            </div>
+            <div class="divider"></div>
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Garantía de<br>Calidad</p>
             </div>
         </div>
     </div>
 
-    <section class="procedures-section" id="procedimientos">
-        <h2 class="section-title" id="proc-main-title">Especialidades del Laboratorio</h2>
-        
+    <!-- 5. SECCIÓN DE PROCEDIMIENTOS -->
+    <section id="procedimientos" class="procedures-section hidden-scroll">
+        <h2 class="section-title">Nuestros Servicios</h2>
         <div class="procedures-grid">
-            <div class="procedure-card hidden-scroll">
-                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=600" alt="Prótesis Fijas">
+            <!-- Tarjeta 1 -->
+            <div class="procedure-card">
+                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=800" alt="Coronas de Porcelana">
                 <div class="card-content">
-                    <h4 id="proc-1-title">Coronas y Puentes</h4>
-                    <span class="card-link" id="proc-1-link">Ver detalles ➔</span>
+                    <h4>Coronas Estéticas</h4>
+                    <span class="card-link">Ver detalles ➜</span>
                 </div>
             </div>
-
-            <div class="procedure-card hidden-scroll">
-                <img src="https://images.unsplash.com/photo-1598256989800-fea5f3cdd411?q=80&w=600" alt="Prótesis Removibles">
+            <!-- Tarjeta 2 -->
+            <div class="procedure-card">
+                <img src="https://images.unsplash.com/photo-1598256989800-fea5ce5146f2?q=80&w=800" alt="Prótesis Flexibles">
                 <div class="card-content">
-                    <h4 id="proc-2-title">Prótesis Removibles</h4>
-                    <span class="card-link" id="proc-2-link">Ver detalles ➔</span>
+                    <h4>Prótesis Flexibles</h4>
+                    <span class="card-link">Ver detalles ➜</span>
                 </div>
             </div>
-
-            <div class="procedure-card hidden-scroll">
-                <img src="https://plus.unsplash.com/premium_photo-1664302152996-322114792b38?q=80&w=600" alt="Carillas Estéticas">
+            <!-- Tarjeta 3 -->
+            <div class="procedure-card">
+                <img src="https://images.unsplash.com/photo-1528208079124-a2387f039c99?q=80&w=800" alt="Carillas Dentales">
                 <div class="card-content">
-                    <h4 id="proc-3-title">Carillas (Zirconio / Disilicato)</h4>
-                    <span class="card-link" id="proc-3-link">Ver detalles ➔</span>
-                </div>
-            </div>
-
-            <div class="procedure-card hidden-scroll">
-                <img src="https://images.unsplash.com/photo-1579728469853-29474dd7c62c?q=80&w=600" alt="Implantes">
-                <div class="card-content">
-                    <h4 id="proc-4-title">Estructuras sobre Implantes</h4>
-                    <span class="card-link" id="proc-4-link">Ver detalles ➔</span>
-                </div>
-            </div>
-
-            <div class="procedure-card hidden-scroll">
-                <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=600" alt="Férulas">
-                <div class="card-content">
-                    <h4 id="proc-5-title">Placas y Férulas de Bruxismo</h4>
-                    <span class="card-link" id="proc-5-link">Ver detalles ➔</span>
-                </div>
-            </div>
-
-            <div class="procedure-card hidden-scroll">
-                <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?q=80&w=600" alt="Aparatología">
-                <div class="card-content">
-                    <h4 id="proc-6-title">Aparatología Ortodóntica</h4>
-                    <span class="card-link" id="proc-6-link">Ver detalles ➔</span>
+                    <h4>Diseño de Sonrisa</h4>
+                    <span class="card-link">Ver detalles ➜</span>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Script para el menú de celular y animaciones de scroll -->
     <script src="script.js"></script>
 </body>
 </html>

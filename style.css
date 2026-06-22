@@ -1,6 +1,8 @@
 /* ==========================================================================
-   VARIABLES DE COLOR Y RESET BÁSICO
+   0. FUENTES, VARIABLES DE COLOR Y RESET BÁSICO
    ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
+
 :root {
     --bg-light: #ffffff;         
     --bg-subtle-cream: #FEFEE8;  
@@ -70,7 +72,7 @@ body {
 
 
 /* ==========================================================================
-   2. NAVEGACIÓN PRINCIPAL Y LOGO (HEADER)
+   2. NAVEGACIÓN PRINCIPAL Y LOGO CREATIVO (HEADER)
    ========================================================================== */
 .main-header { 
     background-color: var(--bg-navbar); 
@@ -79,27 +81,59 @@ body {
     align-items: center; 
     padding: 15px 20px; 
     border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
-    position: relative; 
-    z-index: 100; 
+    position: sticky; 
+    top: 0;
+    z-index: 1000; 
 }
 
-/* --- Estilos para la Imagen del Logo --- */
-.logo { 
-    display: flex; 
-    align-items: center; 
-    height: 100%; 
-}
-
-.logo-img {
-    height: 110px; /* Subimos el tamaño drásticamente aquí */
-    max-height: 110px; /* Y aquí también */
-    width: auto;
-    object-fit: contain;
+/* --- LOGO TIPOGRÁFICO CON EFECTO DORADO --- */
+.logo-creative {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-decoration: none;
+    line-height: 1;
     transition: transform 0.3s ease;
 }
 
-.logo-img:hover {
-    transform: scale(1.05);
+.logo-creative:hover {
+    transform: scale(1.03);
+}
+
+.brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-style: italic;
+    font-weight: 600;
+    margin-bottom: 2px;
+    
+    /* Gradiente dorado con brillo en el centro */
+    background: linear-gradient(to right, var(--gold-solid) 0%, var(--gold-bright) 40%, #FFFDEA 50%, var(--gold-primary) 60%, var(--gold-solid) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text; /* Estandarización */
+    
+    /* Animación infinita de brillo */
+    animation: shine 5s linear infinite;
+}
+
+.brand-tagline {
+    font-family: var(--font-main);
+    font-size: 8.5px;
+    color: #ffffff;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-left: 2px;
+    opacity: 0.75;
+}
+
+/* Animación Keyframes para el brillo del logo */
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
 }
 
 /* --- Menú Hamburguesa y Enlaces --- */
@@ -107,7 +141,7 @@ body {
     background: none; 
     border: none; 
     color: #ffffff; 
-    font-size: 26px; 
+    font-size: 28px; 
     cursor: pointer; 
     display: block; 
 }
@@ -139,11 +173,16 @@ body {
 .nav-menu a:hover { color: var(--gold-bright); }
 
 .nav-menu a.btn-nav { 
-    color: var(--gold-bright); 
+    color: var(--gold-navbar); 
     border: 1px solid var(--gold-bright); 
     padding: 10px; 
     border-radius: 5px; 
     text-align: center; 
+    color: var(--gold-bright);
+}
+.nav-menu a.btn-nav:hover {
+    background-color: var(--gold-bright);
+    color: #000;
 }
 
 
@@ -343,7 +382,6 @@ body {
     letter-spacing: 0.5px;
 }
 
-
 /* ==========================================================================
    ANIMACIÓN DE SCROLL GLOBAL
    ========================================================================== */
@@ -364,10 +402,7 @@ body {
    MEDIA QUERIES (COMPUTADORAS Y PANTALLAS GRANDES)
    ========================================================================== */
 @media (min-width: 768px) {
-    .top-bar { 
-        justify-content: flex-end; 
-        padding-right: 40px; 
-    }
+    .top-bar { justify-content: flex-end; padding-right: 40px; }
     
     .menu-toggle { display: none; }
     
@@ -389,6 +424,9 @@ body {
     }
     
     .nav-menu a.btn-nav { padding: 6px 15px; }
+    
+    .brand-name { font-size: 32px; } /* Logo un poco más grande en PC */
+    .brand-tagline { font-size: 10px; }
     
     .hero { padding: 120px 40px 140px 40px; }
     .hero-content h1 { font-size: 52px; }
