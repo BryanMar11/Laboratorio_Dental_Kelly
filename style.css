@@ -623,6 +623,7 @@ body {
 .text-gradient {
     background: linear-gradient(45deg, var(--gold-bright), #fff2a8);
     -webkit-background-clip: text;
+    background-clip: text; /* <- Esta es la línea que quita la advertencia */
     -webkit-text-fill-color: transparent;
     font-style: italic;
 }
@@ -689,3 +690,183 @@ body {
     margin: 12px auto 0;
 }
 
+/* =========================================
+   SECCIÓN TESTIMONIOS (Corte y Fondo)
+========================================= */
+.testimonials-section {
+    background-color: #ffffff;
+    padding: 120px 20px 80px;
+    
+    /* CORTE DIAGONAL: Sube hacia la derecha */
+    /* Izquierda empieza a los 6vw (más bajo), Derecha termina en 0 (más alto) */
+    clip-path: polygon(0 6vw, 100% 0, 100% 100%, 0 100%);
+    margin-top: -6vw; /* Se monta sobre la sección oscura de Sobre Mí */
+    
+    position: relative;
+    z-index: 10;
+}
+
+/* --- TÍTULOS Y CABECERA --- */
+.testimo-header {
+    text-align: center;
+    margin-bottom: 60px;
+    margin-top: 30px; /* Compensa visualmente el corte de arriba */
+}
+
+.testimo-subtitle {
+    color: var(--gold-bright);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.testimo-header h2 {
+    color: #212121;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.divider-gold {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold-bright), transparent);
+    margin: 0 auto;
+}
+
+/* --- CONTENEDOR DESLIZABLE (SLIDER) --- */
+.testimonials-slider {
+    display: flex;
+    gap: 40px; /* Mucho más espacio para que respiren las tarjetas */
+    padding: 60px 20px 40px; /* Padding top vital para que la foto no se corte */
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    
+    /* Ocultar barra de scroll */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.testimonials-slider::-webkit-scrollbar { display: none; }
+
+@media (min-width: 1024px) {
+    .testimonials-slider { justify-content: center; overflow-x: hidden; }
+}
+
+/* --- DISEÑO CREATIVO DE LA TARJETA --- */
+.testimonial-card {
+    background: #ffffff;
+    border: 1px solid #f0f0f0;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    padding: 55px 30px 35px;
+    position: relative;
+    min-width: 310px;
+    max-width: 360px;
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación suave */
+}
+
+/* Efecto hover: Se levanta al pasar el ratón o el dedo */
+.testimonial-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+/* Detalle creativo: Marca de agua de comillas */
+.quote-mark {
+    position: absolute;
+    top: 15px; right: 25px;
+    font-size: 5rem;
+    color: rgba(212, 175, 55, 0.1); /* Dorado muy transparente */
+    font-family: 'Times New Roman', serif;
+    line-height: 1;
+    z-index: 0;
+}
+
+/* --- FOTO DE PERFIL (AVATAR) Y GOOGLE --- */
+.avatar-wrapper {
+    position: absolute;
+    top: -45px; /* Mitad afuera, mitad adentro */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: #ffffff; /* Borde blanco grueso */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    padding: 5px; 
+    z-index: 2;
+}
+
+.avatar-img {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.google-badge {
+    position: absolute;
+    bottom: -2px; right: -2px;
+    width: 32px; height: 32px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* --- TEXTOS INTERNOS --- */
+.testimo-content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.paciente-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #212121;
+    margin: 0 0 5px;
+}
+
+.review-meta {
+    display: flex; justify-content: center; align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.stars {
+    color: #FABB05; /* Amarillo original de Google */
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+}
+
+.paciente-date { font-size: 0.85rem; color: #888888; }
+
+.testimo-text {
+    font-size: 1.05rem;
+    color: #555555;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+/* --- ANIMACIÓN PARA EL MENSAJE "DESLIZA" --- */
+.swipe-indicator {
+    text-align: center;
+    margin-top: 10px;
+    padding-bottom: 30px;
+    color: #aaaaaa;
+    font-size: 0.95rem;
+    font-weight: 500;
+    animation: pulseSwipe 2s infinite;
+}
+
+@media (min-width: 1024px) { .swipe-indicator { display: none; } }
+
+@keyframes pulseSwipe {
+    0%, 100% { opacity: 0.6; transform: translateX(0); }
+    50% { opacity: 1; transform: translateX(8px); }
+}
