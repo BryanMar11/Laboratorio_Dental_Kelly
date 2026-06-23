@@ -503,5 +503,189 @@ body {
     .card-content h4 { font-size: 24px; }
 }
 
+/* Sección de Servicios: Fondo Blanco */
+.services-section {
+    padding: 80px 20px;
+    background-color: #ffffff; /* Blanco */
+    color: #212121; /* Texto oscuro */
+}
 
+/* Sección Sobre Mí: Fondo como la Navbar con Corte Diagonal */
+.about-section-dark {
+    padding: 120px 20px 80px; /* Aumentamos el espacio arriba para que el corte no tape el texto */
+    background-color: var(--bg-navbar);
+    color: #ffffff;
+    
+    /* LA MAGIA: Esto crea la inclinación */
+    clip-path: polygon(0 5vw, 100% 0, 100% 100%, 0 100%);
+    margin-top: -5vw; /* Hace que se superponga un poco a la sección de arriba */
+    
+    /* Para que el contenido quede centrado y no se rompa */
+    position: relative;
+    z-index: 10;
+}
+
+/* Aseguramos que los textos mantengan sus colores */
+.about-section-dark h2, .about-section-dark h3 {
+    color: #ffffff;
+}
+
+.about-section-dark p, .about-section-dark .feature-item {
+    color: #cccccc;
+}
+
+/* Contenedor principal con posición relativa para el resplandor */
+.about-section-dark {
+    background-color: var(--bg-navbar); /* Tu color oscuro */
+    padding: 100px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* EFECTO CREATIVO 1: Resplandor sutil en el fondo */
+.bg-glow {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212,175,55,0.15) 0%, rgba(33,33,33,0) 70%);
+    top: 10%;
+    left: -100px;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+/* Arreglo de las columnas para Celular (1 columna) y PC (2 columnas) */
+.about-container-creative {
+    display: grid;
+    grid-template-columns: 1fr; /* En celular, uno debajo del otro */
+    gap: 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* PC: Cuando la pantalla es más grande, se ponen lado a lado */
+@media (min-width: 768px) {
+    .about-container-creative {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Estilos de la Imagen y el Marco */
+.about-image-wrapper {
+    max-width: 350px;
+    margin: 0 auto; /* Centra la imagen en celular */
+}
+
+.image-box { position: relative; }
+
+.profile-img { 
+    width: 100%; 
+    border-radius: 12px;
+    display: block;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+
+/* EFECTO CREATIVO 2: Marco dorado desfasado */
+.accent-box {
+    position: absolute;
+    top: 20px; 
+    right: -20px; /* Lo movemos hacia abajo y a la derecha */
+    width: 100%; 
+    height: 100%;
+    border: 3px solid var(--gold-bright);
+    border-radius: 12px;
+    z-index: 1;
+}
+
+/* Textos */
+.highlight-text {
+    color: var(--gold-bright);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.about-text-content h2 {
+    color: #ffffff;
+    font-size: 2.8rem;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+/* EFECTO CREATIVO 3: Texto degradado dorado para resaltar */
+.text-gradient {
+    background: linear-gradient(45deg, var(--gold-bright), #fff2a8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-style: italic;
+}
+
+.about-text-content p {
+    color: #cccccc;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+/* Lista con viñetas personalizadas */
+.check-list li {
+    color: #eeeeee;
+    list-style: none;
+    margin-bottom: 15px;
+    padding-left: 35px;
+    position: relative;
+    font-size: 1.05rem;
+}
+
+.check-list li::before {
+    content: "✦"; /* Estrella elegante en lugar de punto */
+    color: var(--gold-bright);
+    position: absolute; 
+    left: 0;
+    font-size: 1.2rem;
+}
+
+/* Estilos para el nuevo título superior */
+.about-top-header {
+    text-align: center;
+    margin-bottom: 50px; /* Espacio para que no se pegue a la foto en celular */
+    position: relative;
+    z-index: 2;
+}
+
+.about-top-header .top-subtitle {
+    color: var(--gold-bright);
+    font-size: 0.85rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 8px;
+    opacity: 0.9;
+}
+
+.about-top-header .top-title {
+    color: #ffffff;
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+/* Detalle melo: Una línea dorada sutil debajo de "¿Quién Soy?" */
+.about-top-header .top-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold-bright), transparent);
+    margin: 12px auto 0;
+}
 
