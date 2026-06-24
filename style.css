@@ -1110,3 +1110,170 @@ body {
         border-bottom: 3px solid #c5a059;
     }
 }
+
+/* =========================================
+   ESTILOS DEL FOOTER PREMIUM
+   ========================================= */
+
+.premium-footer {
+    background-color: #222222; /* Un gris muy oscuro, casi negro, más elegante que el negro puro */
+    color: #ffffff;
+    position: relative;
+    font-family: inherit;
+}
+
+/* La línea superior dorada (Usando el gradiente para más estilo) */
+.footer-top-line {
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, #b8860b, #ffd700, #c5a059);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 70px 20px 40px 20px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr; /* Columna 1 ligeramente más ancha */
+    gap: 40px;
+}
+
+/* --- Tipografía del Footer --- */
+.footer-heading {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.white-text {
+    color: #ffffff;
+}
+
+.gold-text {
+    color: #c5a059; /* El dorado de tu web */
+}
+
+.footer-text {
+    color: #cccccc;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+.mt-20 {
+    margin-top: 25px; /* Utilidad para separar bloques */
+}
+
+/* --- Enlaces de las Columnas 2 y 3 --- */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    color: #cccccc;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+/* Hover creativo: el texto se ilumina y se mueve un poco a la derecha */
+.footer-links a:hover {
+    color: #c5a059;
+    transform: translateX(8px);
+}
+
+/* --- Redes Sociales --- */
+.footer-socials {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #c5a059;
+    color: #c5a059;
+    transition: all 0.3s ease;
+}
+
+.social-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Al pasar el mouse, el ícono se rellena de dorado */
+.social-icon:hover {
+    background-color: #c5a059;
+    color: #222222;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4);
+}
+
+/* --- Sello de Tecnología (Inspirado en el logo Addi) --- */
+.relative-col {
+    position: relative;
+}
+
+.footer-badge {
+    margin-top: 40px;
+    text-align: left;
+}
+
+.badge-text {
+    display: block;
+    font-size: 0.85rem;
+    color: #aaaaaa;
+    margin-bottom: 5px;
+}
+
+.badge-logo {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: -1px;
+    line-height: 1;
+}
+
+/* --- Copyright Inferior --- */
+.footer-copyright {
+    text-align: center;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-copyright p {
+    color: #777777;
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+/* =========================================
+   RESPONSIVE FOOTER (MÓVILES)
+   ========================================= */
+@media (max-width: 850px) {
+    .footer-container {
+        grid-template-columns: 1fr; /* Todo en una sola columna */
+        gap: 50px;
+    }
+    
+    .footer-badge {
+        text-align: center;
+        margin-top: 30px;
+        padding-top: 30px;
+        border-top: 1px solid rgba(197, 160, 89, 0.2);
+    }
+}
