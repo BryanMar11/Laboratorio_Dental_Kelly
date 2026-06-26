@@ -198,6 +198,79 @@
     </div>
 </section>
 
+<!-- =========================================
+     SECCIÓN: CASOS CLÍNICOS (PORTAFOLIO SLIDER)
+     ========================================= -->
+<section class="clinical-cases-slider-section">
+    <div class="section-container">
+        
+        <!-- ENCABEZADO CREATIVO Y PREMIUM -->
+        <div class="creative-header">
+            <!-- Etiqueta superior con puntitos dorados -->
+            <div class="header-badge-wrapper">
+                <span class="gold-pulse-dot"></span>
+                <span class="header-badge">Portafolio Clínico</span>
+                <span class="gold-pulse-dot"></span>
+            </div>
+            
+            <!-- Título principal con efecto de gradiente -->
+            <h2 class="ultra-title">
+                Precisión que <br>
+                <span class="gradient-text">Transforma Sonrisas</span>
+            </h2>
+            
+        <!-- CONTENEDOR DESLIZABLE (SLIDER) -->
+        <div class="cases-slider">
+            
+            <!-- TARJETA 1 -->
+            <div class="case-card-light">
+                <div class="case-image-wrapper">
+                    <!-- Tu imagen editada -->
+                    <img src="img/Proceso1.jpg" alt="Antes y Después Coronas">
+                </div>
+                <div class="case-content-light">
+                    <h3 class="case-title-dark">Coronas en Zirconio</h3>
+                    <p class="case-desc-dark">Restauración completa devolviendo la anatomía y translucidez natural del diente.</p>
+                </div>
+            </div>
+
+            <!-- TARJETA 2 -->
+            <div class="case-card-light">
+                <div class="case-image-wrapper">
+                    <img src="img/Proceso2.jpg" alt="Antes y Después Carillas">
+                </div>
+                <div class="case-content-light">
+                    <h3 class="case-title-dark">Carillas en Disilicato</h3>
+                    <p class="case-desc-dark">Diseño de sonrisa mínimamente invasivo para un acabado perfecto y simétrico.</p>
+                </div>
+            </div>
+
+            <!-- TARJETA 3 -->
+            <div class="case-card-light">
+                <div class="case-image-wrapper">
+                    <img src="img/Proceso3.jpg" alt="Antes y Después Implantes">
+                </div>
+                <div class="case-content-light">
+                    <h3 class="case-title-dark">Rehabilitación Implantes</h3>
+                    <p class="case-desc-dark">Estructura híbrida diseñada en CAD/CAM para máxima precisión y ajuste.</p>
+                </div>
+            </div>
+
+            <!-- TARJETA 4 -->
+            <div class="case-card-light">
+                <div class="case-image-wrapper">
+                    <img src="img/Proceso4.jpg" alt="Antes y Después Prótesis">
+                </div>
+                <div class="case-content-light">
+                    <h3 class="case-title-dark">Prótesis Total Acrílica</h3>
+                    <p class="case-desc-dark">Recuperación de la función masticatoria con encía caracterizada de alto impacto.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
 <section class="location-section">
     <div class="location-container">
         
@@ -318,6 +391,34 @@
         <p>&copy; 2026 Laboratorio Dental. Todos los derechos reservados. Diseño exclusivo.</p>
     </div>
 </footer>
+
+<div id="imageModal" class="modal">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="fullImage">
+    <div id="caption"></div>
+</div>
+
+<script>
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("fullImage");
+    const cards = document.querySelectorAll(".case-card-light");
+
+    cards.forEach(card => {
+        card.addEventListener("click", () => {
+            const img = card.querySelector("img");
+            modal.style.display = "flex";
+            modalImg.src = img.src;
+        });
+    });
+
+    document.querySelector(".close-modal").onclick = () => {
+        modal.style.display = "none";
+    };
+
+    modal.onclick = (e) => {
+        if (e.target !== modalImg) modal.style.display = "none";
+    };
+</script>
 
 </body>
 </html>

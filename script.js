@@ -123,3 +123,4 @@ function changeLanguage(lang) {
     document.getElementById('btn-en').classList.remove('active');
     document.getElementById(`btn-${lang}`).classList.add('active');
 }
+
