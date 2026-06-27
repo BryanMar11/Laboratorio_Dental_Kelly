@@ -124,3 +124,22 @@ function changeLanguage(lang) {
     document.getElementById(`btn-${lang}`).classList.add('active');
 }
 
+// ==========================================
+// LÓGICA PARA TARJETAS DE SERVICIOS
+// ==========================================
+function toggleService(clickedCard) {
+    // Verificamos si la tarjeta que tocamos ya está abierta
+    const isAlreadyActive = clickedCard.classList.contains('active');
+
+    // Primero, cerramos TODAS las tarjetas para mantener el diseño limpio
+    const allCards = document.querySelectorAll('.serv-card');
+    allCards.forEach(card => {
+        card.classList.remove('active');
+    });
+
+    // Si la tarjeta que tocamos NO estaba abierta, la abrimos.
+    // (Si ya estaba abierta, simplemente se queda cerrada gracias al paso anterior).
+    if (!isAlreadyActive) {
+        clickedCard.classList.add('active');
+    }
+}
