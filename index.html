@@ -218,6 +218,12 @@
                 Precisión que <br>
                 <span class="gradient-text">Transforma Sonrisas</span>
             </h2>
+<div class="scroll-hint">
+    <span class="scroll-text">Desliza para ver más</span>
+    <div class="scroll-icon">
+        <div class="scroll-bar"></div>
+    </div>
+</div>
             
         <!-- CONTENEDOR DESLIZABLE (SLIDER) -->
         <div class="cases-slider">
@@ -269,6 +275,20 @@
 
         </div>
     </div>
+
+<div class="creative-video-wrapper vertical-format" id="openVideoBtn">
+            <img src="img/ImagenVideo.jpeg" alt="Kelly Cabrera Laboratorio Dental" class="video-cover">
+            
+            <div class="video-overlay">
+                <div class="video-content">
+                    <div class="play-button">
+                        <div class="play-triangle"></div>
+                    </div>
+                    <h4 class="video-action-text">Descubre este espacio</h4>
+                    <span class="video-sub-text">Reproducir Video</span>
+                </div>
+            </div>
+        </div>
 </section>
 
 <section class="location-section">
@@ -398,6 +418,16 @@
     <div id="caption"></div>
 </div>
 
+<div id="videoModal" class="modal">
+    <span class="close-video-modal">&times;</span>
+    <div class="modal-video-container">
+        <video id="fullVideo" controls>
+            <source src="Videos/PresentacionVideo.mp4" type="video/mp4">
+            Tu navegador no soporta videos.
+        </video>
+    </div>
+</div>
+
 <script>
     const modal = document.getElementById("imageModal");
     const modalImg = document.getElementById("fullImage");
@@ -418,7 +448,39 @@
     modal.onclick = (e) => {
         if (e.target !== modalImg) modal.style.display = "none";
     };
+
+    // ==========================================
+    // 2. LÓGICA PARA EL MODAL DE VIDEO
+    // ==========================================
+    const videoModal = document.getElementById("videoModal");
+    const openVideoBtn = document.getElementById("openVideoBtn");
+    const closeVideoBtn = document.querySelector(".close-video-modal");
+    const fullVideo = document.getElementById("fullVideo");
+
+    // Abrir video y darle play automático
+    openVideoBtn.addEventListener("click", () => {
+        videoModal.style.display = "flex";
+        fullVideo.play(); 
+    });
+
+    // Función para cerrar y pausar
+    const closeAndPauseVideo = () => {
+        videoModal.style.display = "none";
+        fullVideo.pause(); // ¡Evita que siga sonando de fondo!
+    };
+
+    // Cerrar con la X
+    closeVideoBtn.onclick = closeAndPauseVideo;
+
+    // Cerrar haciendo clic afuera del video
+    videoModal.onclick = (e) => {
+        if (e.target === videoModal) {
+            closeAndPauseVideo();
+        }
+    };
 </script>
+</script>
+
 
 </body>
 </html>

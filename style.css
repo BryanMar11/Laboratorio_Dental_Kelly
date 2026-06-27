@@ -1343,6 +1343,7 @@ body {
 .gradient-text {
     background: linear-gradient(135deg, #b8860b 0%, #ffd700 50%, #c5a059 100%);
     -webkit-background-clip: text;
+    background-clip: text; /* Esta es la línea que falta */
     -webkit-text-fill-color: transparent;
     display: inline-block;
 }
@@ -1487,4 +1488,256 @@ body {
 /* Cursor para avisar que es clickeable */
 .case-card-light {
     cursor: pointer;
+}
+
+/* =========================================
+   AVISO DE DESLIZAMIENTO
+   ========================================= */
+.scroll-hint {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-text {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #888;
+}
+
+.scroll-icon {
+    width: 40px;
+    height: 4px;
+    background: rgba(197, 160, 89, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.scroll-bar {
+    width: 50%;
+    height: 100%;
+    background: #c5a059;
+    border-radius: 2px;
+    animation: slide-indicator 2s infinite ease-in-out;
+}
+
+@keyframes slide-indicator {
+    0% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Opcional: que desaparezca cuando el usuario empiece a interactuar */
+.cases-slider:active ~ .scroll-hint {
+    opacity: 0;
+}
+
+/* Ocultar en escritorio si prefieres, ya que ahí hay scrollbar o mouse */
+@media (min-width: 769px) {
+    .scroll-hint {
+        display: none;
+    }
+}
+
+/* =========================================
+   ESTILOS DEL VIDEO (FORMATO VERTICAL PREMIUM)
+   ========================================= */
+
+.creative-video-wrapper.vertical-format {
+    width: 100%;
+    max-width: 360px; /* Ancho ideal simulando un celular */
+    aspect-ratio: 9 / 16; /* Fuerza el formato vertical perfecto */
+    margin: 60px auto 40px auto; 
+    border-radius: 30px; /* Bordes bien redondeados tipo iPhone */
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15); /* Sombra elegante */
+    border: 1px solid rgba(197, 160, 89, 0.4); /* Borde dorado */
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+.creative-video-wrapper.vertical-format:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 30px 60px rgba(197, 160, 89, 0.3);
+}
+
+.video-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s ease;
+}
+
+.creative-video-wrapper.vertical-format:hover .video-cover {
+    transform: scale(1.08); /* Zoom in lento a la foto de Kelly */
+}
+
+/* Degradado elegante de oscuro abajo a transparente arriba */
+.video-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to top, rgba(17, 17, 17, 0.95) 0%, rgba(17, 17, 17, 0.3) 50%, rgba(17, 17, 17, 0.1) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Manda el contenido hacia abajo */
+    align-items: center;
+    padding-bottom: 50px; /* Espacio desde abajo */
+    transition: background 0.4s ease;
+}
+
+.creative-video-wrapper.vertical-format:hover .video-overlay {
+    background: linear-gradient(to top, rgba(17, 17, 17, 0.95) 0%, rgba(197, 160, 89, 0.4) 50%, rgba(17, 17, 17, 0.2) 100%);
+}
+
+/* Agrupador de textos y botón */
+.video-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    z-index: 2;
+}
+
+/* Textos bajo el play */
+.video-action-text {
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin: 0;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    transform: translateY(15px);
+    opacity: 0.9;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.video-sub-text {
+    color: #c5a059;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+}
+
+.creative-video-wrapper.vertical-format:hover .video-action-text {
+    transform: translateY(0);
+}
+
+.creative-video-wrapper.vertical-format:hover .video-sub-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Botón de Play Elegante */
+.play-button {
+    width: 75px;
+    height: 75px;
+    background: rgba(197, 160, 89, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    animation: pulse-play 2s infinite;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.play-triangle {
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 20px solid #ffffff; 
+    margin-left: 5px; 
+}
+
+@keyframes pulse-play {
+    0% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.6); }
+    70% { box-shadow: 0 0 0 25px rgba(197, 160, 89, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0); }
+}
+
+/* =========================================
+   MODAL ESPECÍFICO PARA EL VIDEO (CORREGIDO)
+   ========================================= */
+
+.modal-video-container {
+    width: 100%;
+    /* Limitamos el ancho para PC, pero lo importante es la altura */
+    max-width: 450px; 
+    /* Limitamos la altura al 85% de la pantalla para que nunca se desborde */
+    max-height: 85vh; 
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 50px rgba(197, 160, 89, 0.3);
+    animation: zoom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    justify-content: center;
+    background-color: #000;
+}
+
+.modal-video-container video {
+    width: 100%;
+    height: 100%;
+    max-height: 85vh; /* El video respeta el límite de la pantalla */
+    object-fit: contain; /* Esto asegura que el video se vea COMPLETO sin recortes */
+    border-radius: 15px;
+    outline: none;
+}
+
+/* Botón "X" mejorado para que no se pierda */
+.close-video-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px; /* Más pegado al borde en móviles */
+    color: #ffffff;
+    font-size: 35px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    z-index: 100000; /* Aseguramos que quede por encima de TODO */
+    /* Le agregamos un fondito oscuro circular por si el video de fondo es blanco */
+    background: rgba(0, 0, 0, 0.6);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    backdrop-filter: blur(5px);
+}
+
+.close-video-modal:hover {
+    background: rgba(197, 160, 89, 0.8); /* Se pone dorado al pasar el mouse */
+    transform: scale(1.1);
+}
+
+/* Ajuste fino para celulares pequeños */
+@media (max-width: 768px) {
+    .modal-video-container {
+        width: 90%; /* Deja un margen a los lados en móvil */
+        max-height: 80vh; /* Da más espacio arriba y abajo */
+    }
+    .modal-video-container video {
+        max-height: 80vh;
+    }
+    .close-video-modal {
+        top: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 30px;
+    }
 }
