@@ -2287,4 +2287,50 @@ body {
     }
 }
 
+/* --- ESCAPE DEL CONTENEDOR --- */
+.clinical-cases-slider-section {
+    position: relative;
+    width: 100%;
+    /* Si esto tiene overflow: hidden, el slider se cortará */
+    overflow: visible !important; 
+}
 
+.cases-slider {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    
+    /* Esta es la clave: posicionamiento fuera del flujo normal */
+    position: relative;
+    width: 100vw !important;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+    
+    /* Padding para que los elementos respiren */
+    padding-left: 5vw !important;
+    padding-right: 5vw !important;
+    gap: 30px !important;
+    
+    /* Limpieza */
+    -webkit-overflow-scrolling: touch;
+}
+
+.scroll-hint {
+    display: flex; /* Asegúrate de que sea visible */
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px; /* Separación del título */
+    margin-bottom: 20px; /* Separación del slider */
+    z-index: 10; /* Para que quede por encima de las tarjetas */
+    position: relative; /* Asegura que no se desplace por el overflow */
+    opacity: 0.8;
+}
+
+/* Opcional: Si quieres que solo se vea en PC */
+@media (max-width: 1023px) {
+    .scroll-hint {
+        display: none; /* O manténlo si también quieres que se vea en móvil */
+    }
+}
