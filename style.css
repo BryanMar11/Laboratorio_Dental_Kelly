@@ -122,6 +122,28 @@ body {
 /* ==========================================================================
    2. NAVEGACIÓN PRINCIPAL Y LOGO CREATIVO (HEADER)
    ========================================================================== */
+
+   /* Ajuste del contenedor del logo */
+.logo-creative {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    height: 100%; /* Para que ocupe el alto del header */
+}
+
+/* Ajuste específico de la imagen */
+.logo-img {
+    height: 65px; /* Ajusta este valor al tamaño que quieras */
+    width: auto;  /* Mantiene la proporción original */
+    display: block;
+    transition: transform 0.3s ease; /* Un toque de suavidad */
+}
+
+/* Efecto sutil al pasar el mouse por el logo */
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
 .main-header { 
     background-color: var(--bg-navbar); 
     display: flex; 
@@ -628,6 +650,7 @@ body {
 }
 
 .about-text-content h2 {
+    text-wrap: balance;
     color: #ffffff;
     font-size: 2.8rem;
     line-height: 1.1;
@@ -636,6 +659,7 @@ body {
 
 /* EFECTO CREATIVO 3: Texto degradado dorado para resaltar */
 .text-gradient {
+    justify-content: center;
     background: linear-gradient(45deg, var(--gold-bright), #fff2a8);
     -webkit-background-clip: text;
     background-clip: text; /* <- Esta es la línea que quita la advertencia */
@@ -644,27 +668,36 @@ body {
 }
 
 .about-text-content p {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     color: #cccccc;
     font-size: 1.1rem;
     line-height: 1.7;
     margin-bottom: 30px;
 }
 
-/* Lista con viñetas personalizadas */
-.check-list li {
-    color: #eeeeee;
-    list-style: none;
-    margin-bottom: 15px;
-    padding-left: 35px;
-    position: relative;
-    font-size: 1.05rem;
+.check-list {
+    list-style: none; /* Elimina los puntos por defecto */
+    padding: 0;
+    margin-top: 25px; /* Separa la lista del párrafo anterior */
 }
 
+.check-list li {
+    position: relative;
+    padding-left: 35px; /* Más espacio para que el ícono no toque el texto */
+    margin-bottom: 20px; /* Crea aire entre cada punto */
+    line-height: 1.6; /* Aumenta el interlineado para que no se vea denso */
+    font-size: 1.05rem; /* Un pelín más grande para legibilidad */
+    color: #e0e0e0; /* Un gris claro que descansa más la vista que el blanco puro */
+}
+
+/* Ajuste para el ícono de la estrella */
 .check-list li::before {
-    content: "✦"; /* Estrella elegante en lugar de punto */
-    color: var(--gold-bright);
-    position: absolute; 
+    content: "✦"; /* O el ícono que uses */
+    position: absolute;
     left: 0;
+    color: #c5a059; /* El color dorado de tu marca */
     font-size: 1.2rem;
 }
 
@@ -1954,4 +1987,103 @@ body {
 @media (max-width: 768px) {
     .elegant-title { font-size: 2.8rem; }
     .payment-card { padding: 25px 30px; width: 90%; }
+}
+
+/* =========================================
+   CARRUSEL INFINITO DE LOGOS (SOBRE MÍ)
+   ========================================= */
+
+.infinite-slider-container {
+    /* 1. Forzamos el ancho al 100% de la ventana (Viewport Width), no del contenedor */
+    width: 100vw; 
+    
+    /* 2. El truco clave: Centramos el elemento y le restamos exactamente la mitad de la pantalla para ignorar el padding del padre */
+    margin-left: calc(50% - 50vw);
+    
+    /* 3. Lo que ya teníamos para la estética y funcionamiento */
+    margin-top: 60px;
+    padding: 30px 0;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(197, 160, 89, 0.1);
+}
+
+.logo-track {
+    display: flex;
+    align-items: center;
+    gap: 100px; /* Espacio entre cada logo */
+    width: max-content; /* Deja que la pista mida lo que necesite */
+    
+    /* Animación: nombre, duración, velocidad constante, infinito */
+    animation: scrollLogos 20s linear infinite;
+}
+
+/* Pausar la animación si el usuario pasa el mouse por encima (Opcional pero elegante) */
+.infinite-slider-container:hover .logo-track {
+    animation-play-state: paused;
+}
+
+.slider-logo {
+    height: 60px; /* Controla el tamaño de todos los logos aquí */
+    width: auto;
+    filter: grayscale(100%) opacity(0.6); /* Los pone grises/opacos para que no roben atención */
+    transition: all 0.4s ease;
+}
+
+/* Al pasar el mouse, el logo toma su color original y brilla */
+.slider-logo:hover {
+    filter: grayscale(0%) opacity(1);
+    transform: scale(1.1);
+}
+
+/* La magia del movimiento infinito */
+@keyframes scrollLogos {
+    0% {
+        transform: translateX(0); /* Empieza en cero */
+    }
+    100% {
+        /* Se mueve exactamente la mitad, lo que empalma perfecto con los duplicados */
+        transform: translateX(-50%); 
+    }
+}
+
+/* =========================================
+   EFECTO DE TARJETA EXPANDIDA (FLYER COMPLETO)
+   ========================================= */
+
+/* 1. La tarjeta principal crece y resalta por encima de las demás */
+.serv-card.active {
+    transform: scale(1.03) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7) !important;
+    z-index: 10; 
+}
+
+/* 2. El contenedor de la imagen se hace mucho más alto para dar espacio al flyer */
+.serv-card.active .serv-img-wrapper {
+    height: 450px !important; /* Puedes subirlo a 500px si el flyer es muy alto */
+    background-color: #111; /* Fondo oscuro por si quedan espacios a los lados */
+}
+
+/* 3. La imagen se ajusta para verse completa (contain) y recupera su brillo original */
+.serv-card.active .serv-img-wrapper img {
+    object-fit: contain !important; 
+    filter: brightness(1) !important; /* Quita filtros oscuros si están aplicados directo a la img */
+}
+
+/* 4. Apagamos cualquier capa negra (pseudo-elementos) que esté oscureciendo la imagen */
+.serv-card.active .serv-img-wrapper::before,
+.serv-card.active .serv-img-wrapper::after {
+    opacity: 0 !important; 
+    visibility: hidden !important;
+}
+
+/* 5. Volvemos transparente la barra del título para que no tape el texto de tu imagen */
+.serv-card.active .serv-title-bar {
+    background: transparent !important; /* Quita el degradado negro debajo del título */
+    background-image: none !important;
+}
+
+/* 6. (Opcional) Si la imagen ya tiene su propio título, ocultamos el título HTML para no repetirlo */
+.serv-card.active .serv-title-bar h3 {
+    opacity: 0; 
 }
