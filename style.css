@@ -2087,3 +2087,204 @@ body {
 .serv-card.active .serv-title-bar h3 {
     opacity: 0; 
 }
+
+/* Para que las columnas no se sientan pegadas */
+.footer-container {
+    display: flex;
+    justify-content: space-evenly; /* Distribuye uniformemente */
+    align-items: flex-start;
+    padding: 60px 20px; /* Un poco más de aire arriba y abajo */
+}
+
+/* El "Centro de Ayuda" ganará presencia */
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li a {
+    font-size: 1.1rem; /* Un pelín más grande para que tenga más peso */
+    display: block;
+    padding: 10px 0; /* Esto ayuda a que el bloque ocupe más altura visual */
+}
+
+.faq-link {
+    border-bottom: 1px solid #d4af37; /* Línea dorada sutil */
+    padding-bottom: 2px;
+    color: #fff !important; /* Blanco brillante para que destaque */
+}
+
+.faq-link:hover {
+    color: #d4af37 !important; /* Cambia a dorado al pasar el mouse */
+}
+
+.faq-link {
+    border-bottom: 1px solid #d4af37; /* Línea dorada sutil */
+    padding-bottom: 2px;
+    color: #fff !important; /* Blanco brillante para que destaque */
+}
+
+.faq-link:hover {
+    color: #d4af37 !important; /* Cambia a dorado al pasar el mouse */
+}
+
+/* Centrar ES | EN en pantallas grandes */
+@media (min-width: 768px) {
+    .top-bar {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .lang-switcher {
+        display: flex;
+        align-items: center;
+        /* Si quieres un poco más de aire arriba, descomenta la línea de abajo */
+        /* padding-top: 5px; */
+    }
+}
+
+/* Solo para pantallas grandes (PC) */
+@media (min-width: 1024px) {
+    .services-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* Esto centra las tarjetas en la fila */
+        gap: 30px;
+    }
+
+    .serv-card {
+        flex: 0 0 calc(33.333% - 30px); /* Obliga a que quepan 3 por fila */
+        max-width: 400px;
+    }
+
+    /* Aquí está el truco para la tarjeta 4: 
+       La obligamos a ocupar el centro en la segunda fila */
+    .serv-card:nth-child(4) {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (min-width: 1024px) {
+    .location-content {
+        /* Centramos todo el texto y elementos internos */
+        text-align: center;
+        
+        /* Aseguramos que el contenido ocupe el centro del espacio disponible */
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centra horizontalmente los elementos */
+        justify-content: center; /* Centra verticalmente si es necesario */
+    }
+
+    /* Centramos el título y el separador */
+    .premium-title-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    /* Centramos los grupos de info */
+    .info-group {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 80%; /* Evita que el texto sea demasiado ancho */
+    }
+}
+
+/* 1. ESTILO POR DEFECTO (Celular) */
+.hero {
+    background-image: url('img/Fondo2.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Ajusta la altura para celular */
+    height: 80vh; 
+}
+
+/* 2. ESTILO PARA PC (Media Query) */
+@media (min-width: 1024px) {
+    .hero {
+        /* Aquí cambiamos el fondo por la versión de PC */
+        background-image: url('img/Fondo1.jpeg');
+        
+        /* Ajustes específicos para PC para que se vea premium */
+        background-attachment: fixed; /* Esto crea un efecto Parallax muy elegante */
+        background-position: center center;
+        height: 90vh; /* Un poco más de altura para pantallas grandes */
+    }
+}
+
+/* --- HERO SECTION CON OSCURECIMIENTO PREMIUM --- */
+.hero {
+    position: relative; /* Necesario para que el overlay funcione */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80vh; /* Ajuste para celular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Esta es la capa de oscurecimiento que habíamos perdido */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65); /* El 0.65 es el nivel de oscuridad */
+    z-index: 1; /* Pone la sombra encima de la imagen pero debajo del texto */
+}
+
+/* Aseguramos que el contenido esté por encima de la sombra */
+.hero-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    text-align: center;
+}
+
+/* --- Ajuste para PC --- */
+@media (min-width: 1024px) {
+    .hero {
+        height: 90vh;
+        /* Aquí mantienes tu imagen de escritorio */
+    }
+}
+
+/* --- FOOTER RESPONSIVE --- */
+
+/* Por defecto (Celular): Una sola columna */
+.footer-container {
+    display: flex;
+    flex-direction: column; /* Apila los elementos verticalmente */
+    text-align: center;     /* Centra el texto en celular para mejor lectura */
+    gap: 30px;              /* Espacio entre los bloques */
+    padding: 40px 20px;
+}
+
+.footer-col {
+    width: 100%;            /* Ocupa todo el ancho */
+}
+
+/* Solo para PC: Volvemos a las tres columnas */
+@media (min-width: 1024px) {
+    .footer-container {
+        flex-direction: row; /* Pone las columnas una al lado de la otra */
+        text-align: left;    /* Alinea el texto a la izquierda en PC */
+        justify-content: space-between;
+    }
+    
+    .footer-col {
+        width: 30%;          /* Distribuye el espacio para 3 columnas */
+    }
+}
+
+
