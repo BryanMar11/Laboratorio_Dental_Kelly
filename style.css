@@ -2334,3 +2334,263 @@ body {
         display: none; /* O manténlo si también quieres que se vea en móvil */
     }
 }
+
+/* =========================================
+   ESTILOS: SECCIÓN CLIENTES DINÁMICOS
+   ========================================= */
+.trusted-clients-section {
+    position: relative;
+    padding: 100px 5%;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    /* Transición mágica de fondo */
+    transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1), color 0.8s ease;
+    overflow: hidden;
+}
+
+/* Modos de Color */
+.trusted-clients-section.theme-dark {
+    background-color: #111111;
+    color: #ffffff;
+}
+.trusted-clients-section.theme-light {
+    background-color: #ffffff;
+    color: #1a1a1a;
+}
+
+.clients-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+}
+
+/* Estructura del Cliente */
+.client-slide {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.client-slide.active-client {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* --- ZONA VISUAL (IMÁGENES) --- */
+.client-visual {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.img-carousel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #2a2a2a;
+}
+
+.c-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.c-img.active-img {
+    opacity: 1;
+}
+
+/* Botón flotante interno (Cambiar foto) */
+.cycle-photo-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(212, 175, 55, 0.9);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #111;
+    transition: transform 0.3s ease, background 0.3s ease;
+    backdrop-filter: blur(5px);
+    z-index: 10;
+}
+.cycle-photo-btn:hover {
+    transform: scale(1.1);
+    background: rgba(212, 175, 55, 1);
+}
+.cycle-photo-btn svg { width: 24px; height: 24px; }
+
+/* --- ZONA DE TEXTO (CON ESTILO TERMINAL) --- */
+.client-info {
+    padding-right: 80px;
+}
+
+.tech-badge {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 15px;
+    transition: color 0.8s ease;
+}
+
+.theme-dark .tech-badge { color: #888; }
+.theme-light .tech-badge { color: #777; }
+
+.gold-slash {
+    color: #d4af37;
+    font-weight: 900;
+    margin-right: 10px;
+}
+
+.client-name {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shineGold 4s linear infinite;
+}
+
+.theme-dark .client-name {
+    background-image: linear-gradient(90deg, #d4af37 0%, #fff6c5 40%, #d4af37 80%);
+}
+
+.theme-light .client-name {
+    background-image: linear-gradient(90deg, #111111 0%, #666666 40%, #111111 80%);
+}
+
+@keyframes shineGold {
+    to { background-position: 200% center; }
+}
+
+.blinking-cursor {
+    font-family: monospace;
+    font-weight: normal;
+    margin-left: 5px;
+    color: #d4af37;
+    -webkit-text-fill-color: #d4af37; 
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.client-clinic {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+.client-review {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* Colores dinámicos para los textos secundarios */
+.theme-dark .client-review { color: #cccccc; }
+.theme-light .client-review { color: #444444; }
+.theme-dark .client-clinic { color: #a0a0a0; }
+.theme-light .client-clinic { color: #666666; }
+
+/* --- BOTÓN FLOTANTE GLOBAL (Cambio de Cliente) --- */
+.switch-client-btn {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    z-index: 20;
+}
+
+.switch-text {
+    writing-mode: vertical-rl;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #d4af37;
+    transition: color 0.3s ease;
+}
+
+.switch-icon {
+    width: 2px;
+    height: 60px;
+    background: #d4af37;
+    position: relative;
+    overflow: hidden;
+}
+
+.switch-icon::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    animation: scanLine 2s infinite linear;
+}
+
+@keyframes scanLine {
+    0% { top: -100%; }
+    100% { top: 100%; }
+}
+
+.switch-client-btn:hover .switch-text { color: #fff; }
+.theme-light .switch-client-btn:hover .switch-text { color: #111; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .client-slide { grid-template-columns: 1fr; gap: 30px; }
+    .client-info { padding-right: 0; padding-bottom: 60px; }
+    .switch-client-btn {
+        top: auto; bottom: 0; right: 50%; transform: translateX(50%); flex-direction: row;
+    }
+    .switch-text { writing-mode: horizontal-tb; }
+    .switch-icon { width: 60px; height: 2px; }
+    .switch-icon::before {
+        top: 0; left: -100%; animation: scanLineH 2s infinite linear;
+    }
+    @keyframes scanLineH {
+        0% { left: -100%; } 100% { left: 100%; }
+    }
+    .client-name { font-size: 2.5rem; }
+}

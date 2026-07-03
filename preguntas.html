@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro de Ayuda | Lab. Kelly Cabrera</title>
+    <!-- Tu hoja de estilos principal (para mantener la navbar) -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* =========================================
+           MODO CLARO (ALTA TECNOLOGÍA) PARA FAQ
+           ========================================= */
+        .faq-page-light {
+            background-color: #ffffff; /* Fondo blanco crudo */
+            color: #1a1a1a;
+            padding: 120px 5% 80px;
+            min-height: 80vh;
+            /* Animación de entrada para toda la sección */
+            animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .faq-grid-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 50px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .faq-header-column .ultra-title {
+            color: #161616; /* Título oscuro */
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .faq-header-column .gradient-text {
+            color: #d4af37; /* Tu dorado inconfundible */
+        }
+
+        .faq-subtitle {
+            color: #555555;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* --- TARJETAS INTERACTIVAS (ANIMADAS) --- */
+        .faq-accordion-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .faq-item-card {
+            background: #fdfdfd;
+            border: 1px solid #eaeaea;
+            border-radius: 12px;
+            padding: 5px 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Efecto flotante al pasar el mouse (Estilo Tech) */
+        .faq-item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
+            border-color: rgba(212, 175, 55, 0.5);
+        }
+
+        /* Línea lateral dorada que aparece en hover */
+        .faq-item-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: #d4af37;
+            transform: scaleY(0);
+            transition: transform 0.4s ease;
+            transform-origin: bottom;
+        }
+
+        .faq-item-card:hover::before,
+        .faq-item-card.active-card::before {
+            transform: scaleY(1);
+        }
+
+        .faq-question-btn {
+            width: 100%;
+            background: none;
+            border: none;
+            color: #222;
+            font-size: 1.15rem;
+            font-weight: 600;
+            text-align: left;
+            padding: 20px 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.3s ease;
+        }
+
+        .faq-question-btn:hover,
+        .faq-item-card.active-card .faq-question-btn {
+            color: #d4af37;
+        }
+
+        /* Icono + y - Animado */
+        .icon-cross {
+            position: relative;
+            width: 24px;
+            height: 24px;
+        }
+        .icon-cross::before, .icon-cross::after {
+            content: ''; position: absolute; background-color: #222; transition: all 0.4s ease;
+        }
+        .icon-cross::before { top: 11px; left: 2px; width: 20px; height: 2px; }
+        .icon-cross::after { top: 2px; left: 11px; width: 2px; height: 20px; }
+        
+        .faq-item-card:hover .icon-cross::before,
+        .faq-item-card:hover .icon-cross::after {
+            background-color: #d4af37;
+        }
+        
+        .faq-item-card.active-card .icon-cross::after {
+            transform: rotate(90deg);
+            opacity: 0;
+        }
+
+        .faq-answer-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .faq-answer-content p {
+            color: #666;
+            line-height: 1.7;
+            padding-bottom: 25px;
+            margin: 0;
+        }
+
+        /* --- FOOTER CREATIVO (MINIMALISTA Y CENTRADO) --- */
+        .minimal-return-footer {
+            background-color: #111; /* Regresa al tema oscuro para cerrar la página */
+            padding: 60px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-top: 2px solid #d4af37;
+        }
+
+        .creative-return-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: transparent;
+            color: #d4af37;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 16px 40px;
+            border: 1px solid #d4af37;
+            border-radius: 50px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: color 0.4s ease;
+        }
+
+        /* Efecto de llenado estilo terminal/hacker fluido */
+        .creative-return-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: #d4af37;
+            z-index: -1;
+            transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .creative-return-btn:hover {
+            color: #111;
+        }
+
+        .creative-return-btn:hover::before {
+            width: 100%;
+        }
+
+        .return-arrow {
+            font-size: 1.5rem;
+            transition: transform 0.4s ease;
+        }
+
+        .creative-return-btn:hover .return-arrow {
+            transform: translateX(-8px); /* La flecha se mueve indicando "atrás" */
+        }
+
+        /* Responsive */
+        @media (min-width: 1024px) {
+            .faq-grid-container { grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: start; }
+            .faq-header-column { position: sticky; top: 120px; }
+        }
+
+        /* Animación de carga */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- =========================================
+         NAVBAR (Exactamente igual a tu index)
+         ========================================= -->
+    <header class="main-header">
+        <a href="index.html#inicio" class="logo-creative">
+            <img src="img/Navbar-removebg-preview.png" alt="Logo Kelly Cabrera" class="logo-img">
+        </a>
+        <nav class="nav-menu" id="nav-menu">
+            <a href="index.html#inicio">Inicio</a>
+            <a href="index.html#procedimientos">Procedimientos</a>
+            <a href="index.html#sobre-mi">Sobre Mí</a> 
+            <a href="index.html#testimonios">Testimonios</a>
+            <a href="https://wa.me/573027084024" class="btn-nav">Contáctenos</a>
+        </nav>
+    </header>
+
+    <!-- =========================================
+         SECCIÓN FAQ (Modo Claro & Animado)
+         ========================================= -->
+    <main class="faq-page-light">
+        <section class="creative-faq-section">
+            <div class="faq-grid-container">
+                
+                <!-- Columna Izquierda: Título -->
+                <div class="faq-header-column">
+                    <h1 class="ultra-title">
+                        Preguntas <br>
+                        <span class="gradient-text">Frecuentes</span>
+                    </h1>
+                    <p class="faq-subtitle">Toda la información técnica y procesos de nuestro laboratorio, resuelta de forma precisa y directa.</p>
+                </div>
+
+                <!-- Columna Derecha: Acordeón Animado -->
+                <div class="faq-accordion-column">
+                    
+                    <!-- Pregunta 1 -->
+                    <div class="faq-item-card">
+                        <button class="faq-question-btn">
+                            ¿Cuáles son los tiempos de entrega para trabajos en Zirconio?
+                            <span class="icon-cross"></span>
+                        </button>
+                        <div class="faq-answer-content">
+                            <p>Los tiempos de entrega estándar son de 3 a 5 días hábiles, dependiendo de la complejidad de la rehabilitación y la validación del diseño en CAD/CAM.</p>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 2 -->
+                    <div class="faq-item-card">
+                        <button class="faq-question-btn">
+                            ¿Tienen cobertura de envíos para clínicas en Cali y alrededores?
+                            <span class="icon-cross"></span>
+                        </button>
+                        <div class="faq-answer-content">
+                            <p>Sí, contamos con logística de recogida y entrega directa en la ciudad de Cali. Para zonas aledañas, coordinamos envíos seguros garantizando la integridad de las prótesis.</p>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 3 -->
+                    <div class="faq-item-card">
+                        <button class="faq-question-btn">
+                            ¿Qué garantía y soporte post-venta ofrecen?
+                            <span class="icon-cross"></span>
+                        </button>
+                        <div class="faq-answer-content">
+                            <p>Ofrecemos garantía total sobre defectos de fabricación o fallos en los materiales. Nuestro equipo de soporte acompaña cada caso para asegurar el ajuste perfecto en el paciente.</p>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 4 -->
+                    <div class="faq-item-card">
+                        <button class="faq-question-btn">
+                            ¿En qué formato debo enviar los escaneos intraorales?
+                            <span class="icon-cross"></span>
+                        </button>
+                        <div class="faq-answer-content">
+                            <p>Aceptamos archivos en formato .STL y .PLY. Puedes cargarlos directamente a nuestro portal o enviarlos a través de nuestro correo técnico especializado.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- =========================================
+         FOOTER CREATIVO (Solo botón de retorno)
+         ========================================= -->
+    <footer class="minimal-return-footer">
+        <a href="index.html" class="creative-return-btn">
+            <span class="return-arrow">←</span> 
+            Volver al inicio
+        </a>
+    </footer>
+
+    <!-- =========================================
+         LÓGICA INTERACTIVA DEL ACORDEÓN
+         ========================================= -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const faqCards = document.querySelectorAll(".faq-item-card");
+
+            faqCards.forEach(card => {
+                const btn = card.querySelector(".faq-question-btn");
+                const answer = card.querySelector(".faq-answer-content");
+
+                btn.addEventListener("click", () => {
+                    // Cerrar las demás tarjetas
+                    faqCards.forEach(otherCard => {
+                        if (otherCard !== card && otherCard.classList.contains("active-card")) {
+                            otherCard.classList.remove("active-card");
+                            otherCard.querySelector(".faq-answer-content").style.maxHeight = 0;
+                            otherCard.querySelector(".faq-answer-content").style.opacity = 0;
+                        }
+                    });
+
+                    // Alternar la tarjeta actual
+                    card.classList.toggle("active-card");
+
+                    if (card.classList.contains("active-card")) {
+                        answer.style.maxHeight = answer.scrollHeight + "px";
+                        answer.style.opacity = 1;
+                    } else {
+                        answer.style.maxHeight = 0;
+                        answer.style.opacity = 0;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -370,6 +370,65 @@
         </div>
 </section>
 
+<!-- =========================================
+     SECCIÓN: CLIENTES / TESTIMONIOS DINÁMICOS
+     ========================================= -->
+<section id="testimonios" class="trusted-clients-section theme-dark">
+    <div class="clients-wrapper">
+        
+        <!-- CLIENTE 1 (Fondo Oscuro - Activo por defecto) -->
+        <div class="client-slide active-client" id="client-1">
+            <div class="client-visual">
+                <div class="img-carousel">
+                    <!-- Pon aquí las rutas de tus 3 imágenes del cliente 1 -->
+                    <img src="img/Proceso1.jpg" alt="Caso Cliente 1" class="c-img active-img">
+                    <img src="img/Proceso2.jpg" alt="Caso Cliente 1" class="c-img">
+                    <img src="img/Proceso3.jpg" alt="Caso Cliente 1" class="c-img">
+                </div>
+                <!-- Botón flotante para cambiar foto (Interno) -->
+                <button class="cycle-photo-btn" onclick="nextPhoto(1)" aria-label="Cambiar foto">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+            <div class="client-info">
+                <span class="client-badge">Caso de Éxito 01</span>
+                <h2 class="client-name">Dr. Andrés Valencia</h2>
+                <h3 class="client-clinic">Especialista en Rehabilitación</h3>
+                <p class="client-review">"La precisión milimétrica de las estructuras en Zirconio de Kelly Cabrera nos ha permitido optimizar el tiempo en el sillón dental. Una integración perfecta entre tecnología CAD/CAM y estética natural que nuestros pacientes notan de inmediato."</p>
+            </div>
+        </div>
+
+        <!-- CLIENTE 2 (Fondo Blanco - Oculto por defecto) -->
+        <div class="client-slide" id="client-2">
+            <div class="client-visual">
+                <div class="img-carousel">
+                    <!-- Pon aquí las rutas de tus 3 imágenes del cliente 2 -->
+                    <img src="img/c2-img1.jpg" alt="Caso Cliente 2" class="c-img active-img">
+                    <img src="img/c2-img2.jpg" alt="Caso Cliente 2" class="c-img">
+                    <img src="img/c2-img3.jpg" alt="Caso Cliente 2" class="c-img">
+                </div>
+                <!-- Botón flotante para cambiar foto (Interno) -->
+                <button class="cycle-photo-btn" onclick="nextPhoto(2)" aria-label="Cambiar foto">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+            <div class="client-info">
+                <span class="client-badge">Caso de Éxito 02</span>
+                <h2 class="client-name">Clínica Sonrisas Plus</h2>
+                <h3 class="client-clinic">Diseño de Sonrisa Avanzado</h3>
+                <p class="client-review">"Buscábamos un laboratorio que entendiera la exigencia de las carillas en resina de alta estética. La estratificación capa a capa que manejan aquí ha llevado los resultados de nuestra clínica a otro nivel. Mínima invasión, máximo impacto."</p>
+            </div>
+        </div>
+
+        <!-- BOTÓN FLOTANTE GLOBAL (Cambio de Cliente) -->
+        <button class="switch-client-btn" onclick="toggleClient()" aria-label="Cambiar Cliente">
+            <span class="switch-text">Ver otro caso</span>
+            <div class="switch-icon"></div>
+        </button>
+
+    </div>
+</section>
+
 <!-- ==============================================
      SECCIÓN TESTIMONIOS (Blanca, Corte Diagonal)
 =============================================== -->
@@ -525,7 +584,7 @@
         <div class="footer-col">
             <h3 class="footer-heading gold-text">Centro de Ayuda</h3>
             <ul class="footer-links">
-                <li><a href="#" class="faq-link">Preguntas Frecuentes</a></li>
+                <li><a href="preguntas.html" class="faq-link">Preguntas Frecuentes</a></li>
             </ul>
         </div>
 
@@ -615,6 +674,102 @@
         }
     };
 </script>
+</script>
+
+<section id="testimonios" class="trusted-clients-section theme-dark">
+    <div class="clients-wrapper">
+        
+        <div class="client-slide active-client" id="client-1">
+            <div class="client-visual">
+                <div class="img-carousel">
+                    <img src="img/c1-img1.jpg" alt="Caso Cliente 1" class="c-img active-img">
+                    <img src="img/c1-img2.jpg" alt="Caso Cliente 1" class="c-img">
+                    <img src="img/c1-img3.jpg" alt="Caso Cliente 1" class="c-img">
+                </div>
+                <button class="cycle-photo-btn" onclick="nextPhoto(1)" aria-label="Cambiar foto">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+            
+            <div class="client-info">
+                <span class="tech-badge"><span class="gold-slash">~/</span> CASO_01.exe</span>
+                <h2 class="client-name">
+                    Dr. Andrés Valencia<span class="blinking-cursor">_</span>
+                </h2>
+                <h3 class="client-clinic">Especialista en Rehabilitación</h3>
+                <p class="client-review">"La precisión milimétrica de las estructuras en Zirconio de Kelly Cabrera nos ha permitido optimizar el tiempo en el sillón dental. Una integración perfecta entre tecnología CAD/CAM y estética natural que nuestros pacientes notan de inmediato."</p>
+            </div>
+        </div>
+
+        <div class="client-slide" id="client-2">
+            <div class="client-visual">
+                <div class="img-carousel">
+                    <img src="img/c2-img1.jpg" alt="Caso Cliente 2" class="c-img active-img">
+                    <img src="img/c2-img2.jpg" alt="Caso Cliente 2" class="c-img">
+                    <img src="img/c2-img3.jpg" alt="Caso Cliente 2" class="c-img">
+                </div>
+                <button class="cycle-photo-btn" onclick="nextPhoto(2)" aria-label="Cambiar foto">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+            
+            <div class="client-info">
+                <span class="tech-badge"><span class="gold-slash">~/</span> CASO_02.exe</span>
+                <h2 class="client-name">
+                    Clínica Sonrisas Plus<span class="blinking-cursor">_</span>
+                </h2>
+                <h3 class="client-clinic">Diseño de Sonrisa Avanzado</h3>
+                <p class="client-review">"Buscábamos un laboratorio que entendiera la exigencia de las carillas en resina de alta estética. La estratificación capa a capa que manejan aquí ha llevado los resultados de nuestra clínica a otro nivel. Mínima invasión, máximo impacto."</p>
+            </div>
+        </div>
+
+        <button class="switch-client-btn" onclick="toggleClient()" aria-label="Cambiar Cliente">
+            <span class="switch-text">Ver otro caso</span>
+            <div class="switch-icon"></div>
+        </button>
+
+    </div>
+</section>
+
+<script>
+    // Cambio de Cliente y Tema (Noche / Día)
+    let currentClientIndex = 1;
+
+    function toggleClient() {
+        const section = document.getElementById('testimonios');
+        const client1 = document.getElementById('client-1');
+        const client2 = document.getElementById('client-2');
+
+        if (currentClientIndex === 1) {
+            section.classList.remove('theme-dark');
+            section.classList.add('theme-light');
+            
+            client1.classList.remove('active-client');
+            client2.classList.add('active-client');
+            
+            currentClientIndex = 2;
+        } else {
+            section.classList.remove('theme-light');
+            section.classList.add('theme-dark');
+            
+            client2.classList.remove('active-client');
+            client1.classList.add('active-client');
+            
+            currentClientIndex = 1;
+        }
+    }
+
+    // Carrusel de imágenes independiente por cliente
+    const photoIndices = { 1: 0, 2: 0 };
+
+    function nextPhoto(clientId) {
+        const clientWrapper = document.getElementById(`client-${clientId}`);
+        const images = clientWrapper.querySelectorAll('.c-img');
+        
+        images[photoIndices[clientId]].classList.remove('active-img');
+        photoIndices[clientId] = (photoIndices[clientId] + 1) % images.length;
+        images[photoIndices[clientId]].classList.add('active-img');
+    }
 </script>
 
 
