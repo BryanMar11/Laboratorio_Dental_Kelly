@@ -355,20 +355,51 @@
         </div>
     </div>
 
-<div class="creative-video-wrapper vertical-format" id="openVideoBtn">
-            <img src="img/ImagenVideo.jpeg" alt="Kelly Cabrera Laboratorio Dental" class="video-cover">
-            
+</section>
+
+<section class="video-gallery-section">
+    <div class="video-gallery-container" id="videoGallery">
+        
+        <div class="creative-video-wrapper vertical-format open-video-btn active-mobile-video" data-video-src="Videos/PresentacionVideo.mp4">
+            <img src="img/ImagenVideo.jpeg" alt="Laboratorio" class="video-cover">
             <div class="video-overlay">
                 <div class="video-content">
-                    <div class="play-button">
-                        <div class="play-triangle"></div>
-                    </div>
-                    <h4 class="video-action-text">Descubre este espacio</h4>
+                    <div class="play-button"><div class="play-triangle"></div></div>
+                    <h4 class="video-action-text">El Laboratorio</h4>
                     <span class="video-sub-text">Reproducir Video</span>
                 </div>
             </div>
         </div>
+
+        <div class="creative-video-wrapper vertical-format open-video-btn" data-video-src="Videos/PresentacionVideo2.mp4">
+            <img src="img/ImagenVideo2.jpg" alt="Procesos" class="video-cover">
+            <div class="video-overlay">
+                <div class="video-content">
+                    <div class="play-button"><div class="play-triangle"></div></div>
+                    <h4 class="video-action-text">Nuestros Procesos</h4>
+                    <span class="video-sub-text">Reproducir Video</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <button class="mobile-switch-video-btn" id="switchVideoBtn" aria-label="Cambiar video">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+        <span>Ver otro video</span>
+    </button>
 </section>
+
+<div id="videoModal" class="modal">
+    <span class="close-video-modal">&times;</span>
+    <div class="modal-video-container">
+        <video id="fullVideo" controls>
+            <source id="videoSource" src="" type="video/mp4">
+            Tu navegador no soporta videos.
+        </video>
+    </div>
+</div>
+
 
 <!-- =========================================
      SECCIÓN: CLIENTES / TESTIMONIOS DINÁMICOS
@@ -613,123 +644,71 @@
     <div id="caption"></div>
 </div>
 
-<div id="videoModal" class="modal">
-    <span class="close-video-modal">&times;</span>
-    <div class="modal-video-container">
-        <video id="fullVideo" controls>
-            <source src="Videos/PresentacionVideo.mp4" type="video/mp4">
-            Tu navegador no soporta videos.
-        </video>
-    </div>
-</div>
-
 <script>
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("fullImage");
-    const cards = document.querySelectorAll(".case-card-light");
+    // ==========================================
+    // 1. LÓGICA DEL BOTÓN FLOTANTE (MÓVIL)
+    // ==========================================
+    let currentVideoIndex = 0;
+    const videoWrappers = document.querySelectorAll('.video-gallery-container .creative-video-wrapper');
+    const switchVideoBtn = document.getElementById('switchVideoBtn');
 
-    cards.forEach(card => {
-        card.addEventListener("click", () => {
-            const img = card.querySelector("img");
-            modal.style.display = "flex";
-            modalImg.src = img.src;
+    if (switchVideoBtn) {
+        switchVideoBtn.addEventListener('click', () => {
+            // Quitamos la clase activa al video actual
+            videoWrappers[currentVideoIndex].classList.remove('active-mobile-video');
+            
+            // Calculamos el índice del siguiente video (0 pasa a 1, 1 pasa a 0)
+            currentVideoIndex = (currentVideoIndex + 1) % videoWrappers.length;
+            
+            // Le ponemos la clase activa al nuevo video para que aparezca
+            videoWrappers[currentVideoIndex].classList.add('active-mobile-video');
+        });
+    }
+
+    // ==========================================
+    // 2. LÓGICA DEL MODAL DINÁMICO (PC Y MÓVIL)
+    // ==========================================
+    const videoModal = document.getElementById("videoModal");
+    const closeVideoBtn = document.querySelector(".close-video-modal");
+    const fullVideo = document.getElementById("fullVideo");
+    const videoSource = document.getElementById("videoSource");
+    const openVideoBtns = document.querySelectorAll(".open-video-btn");
+
+    // Al hacer clic en CUALQUIER video...
+    openVideoBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            // 1. Extraemos la ruta del video que tocamos (el data-video-src)
+            const src = btn.getAttribute("data-video-src");
+            
+            // 2. Se la inyectamos al modal
+            videoSource.src = src;
+            fullVideo.load(); // Le decimos al navegador "recarga la fuente"
+            
+            // 3. Mostramos el modal y le damos play
+            videoModal.style.display = "flex";
+            fullVideo.play(); 
         });
     });
 
-    document.querySelector(".close-modal").onclick = () => {
-        modal.style.display = "none";
-    };
-
-    modal.onclick = (e) => {
-        if (e.target !== modalImg) modal.style.display = "none";
-    };
-
-    // ==========================================
-    // 2. LÓGICA PARA EL MODAL DE VIDEO
-    // ==========================================
-    const videoModal = document.getElementById("videoModal");
-    const openVideoBtn = document.getElementById("openVideoBtn");
-    const closeVideoBtn = document.querySelector(".close-video-modal");
-    const fullVideo = document.getElementById("fullVideo");
-
-    // Abrir video y darle play automático
-    openVideoBtn.addEventListener("click", () => {
-        videoModal.style.display = "flex";
-        fullVideo.play(); 
-    });
-
-    // Función para cerrar y pausar
+    // Función para cerrar, pausar y limpiar
     const closeAndPauseVideo = () => {
         videoModal.style.display = "none";
-        fullVideo.pause(); // ¡Evita que siga sonando de fondo!
+        fullVideo.pause(); 
+        videoSource.src = ""; // Limpiamos la ruta para que no se quede cargado en memoria
+        fullVideo.load();
     };
 
     // Cerrar con la X
     closeVideoBtn.onclick = closeAndPauseVideo;
 
-    // Cerrar haciendo clic afuera del video
+    // Cerrar haciendo clic en el fondo negro
     videoModal.onclick = (e) => {
         if (e.target === videoModal) {
             closeAndPauseVideo();
         }
     };
 </script>
-</script>
 
-<section id="testimonios" class="trusted-clients-section theme-dark">
-    <div class="clients-wrapper">
-        
-        <div class="client-slide active-client" id="client-1">
-            <div class="client-visual">
-                <div class="img-carousel">
-                    <img src="img/c1-img1.jpg" alt="Caso Cliente 1" class="c-img active-img">
-                    <img src="img/c1-img2.jpg" alt="Caso Cliente 1" class="c-img">
-                    <img src="img/c1-img3.jpg" alt="Caso Cliente 1" class="c-img">
-                </div>
-                <button class="cycle-photo-btn" onclick="nextPhoto(1)" aria-label="Cambiar foto">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </button>
-            </div>
-            
-            <div class="client-info">
-                <span class="tech-badge"><span class="gold-slash">~/</span> CASO_01.exe</span>
-                <h2 class="client-name">
-                    Dr. Andrés Valencia<span class="blinking-cursor">_</span>
-                </h2>
-                <h3 class="client-clinic">Especialista en Rehabilitación</h3>
-                <p class="client-review">"La precisión milimétrica de las estructuras en Zirconio de Kelly Cabrera nos ha permitido optimizar el tiempo en el sillón dental. Una integración perfecta entre tecnología CAD/CAM y estética natural que nuestros pacientes notan de inmediato."</p>
-            </div>
-        </div>
-
-        <div class="client-slide" id="client-2">
-            <div class="client-visual">
-                <div class="img-carousel">
-                    <img src="img/c2-img1.jpg" alt="Caso Cliente 2" class="c-img active-img">
-                    <img src="img/c2-img2.jpg" alt="Caso Cliente 2" class="c-img">
-                    <img src="img/c2-img3.jpg" alt="Caso Cliente 2" class="c-img">
-                </div>
-                <button class="cycle-photo-btn" onclick="nextPhoto(2)" aria-label="Cambiar foto">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </button>
-            </div>
-            
-            <div class="client-info">
-                <span class="tech-badge"><span class="gold-slash">~/</span> CASO_02.exe</span>
-                <h2 class="client-name">
-                    Clínica Sonrisas Plus<span class="blinking-cursor">_</span>
-                </h2>
-                <h3 class="client-clinic">Diseño de Sonrisa Avanzado</h3>
-                <p class="client-review">"Buscábamos un laboratorio que entendiera la exigencia de las carillas en resina de alta estética. La estratificación capa a capa que manejan aquí ha llevado los resultados de nuestra clínica a otro nivel. Mínima invasión, máximo impacto."</p>
-            </div>
-        </div>
-
-        <button class="switch-client-btn" onclick="toggleClient()" aria-label="Cambiar Cliente">
-            <span class="switch-text">Ver otro caso</span>
-            <div class="switch-icon"></div>
-        </button>
-
-    </div>
-</section>
 
 <script>
     // Cambio de Cliente y Tema (Noche / Día)
@@ -771,6 +750,7 @@
         images[photoIndices[clientId]].classList.add('active-img');
     }
 </script>
+
 
 
 </body>

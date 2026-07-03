@@ -1775,6 +1775,90 @@ body {
     }
 }
 
+/* =========================================
+   CONTENEDOR DE LA GALERÍA DE VIDEOS
+   ========================================= */
+.video-gallery-section {
+    position: relative;
+    padding: 40px 0 90px 0; /* Le dimos 90px al final para hacerle espacio al botón */
+    overflow: hidden; 
+}
+
+.video-gallery-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px; /* Separación entre los dos videos en PC */
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* El botón flotante oculto en PC */
+.mobile-switch-video-btn {
+    display: none; 
+}
+
+/* =========================================
+   LÓGICA RESPONSIVE (CELULARES)
+   ========================================= */
+@media (max-width: 768px) {
+    .video-gallery-container {
+        gap: 0;
+    }
+
+    /* Ocultamos todos los videos en celular por defecto */
+    .video-gallery-container .creative-video-wrapper {
+        display: none; 
+    }
+
+    /* Solo mostramos el que tenga la clase 'active-mobile-video' */
+    .video-gallery-container .creative-video-wrapper.active-mobile-video {
+        display: block;
+        animation: fadeInSlide 0.5s ease forwards;
+    }
+
+/* Estilos del Botón Flotante para Móvil */
+    .mobile-switch-video-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        position: absolute; /* <--- EL TRUCO ESTÁ AQUÍ (Antes era fixed) */
+        bottom: 20px; /* Se queda a 20px del final de la sección de videos */
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(17, 17, 17, 0.9);
+        border: 1px solid rgba(197, 160, 89, 0.5);
+        color: #d4af37;
+        padding: 12px 25px;
+        border-radius: 30px;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 0.9rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        z-index: 10; /* Le bajamos un poco el z-index porque ya no compite con toda la página */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        backdrop-filter: blur(10px);
+        cursor: pointer;
+    }
+
+    .mobile-switch-video-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .mobile-switch-video-btn:active {
+        background: rgba(197, 160, 89, 0.2);
+    }
+}
+
+/* Animación suave al cambiar de video en móvil */
+@keyframes fadeInSlide {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
 /* ==========================================================================
    SECCIÓN: NUESTROS SERVICIOS (VERSION COMPLETA Y ELEGANTE)
    ========================================================================== */
