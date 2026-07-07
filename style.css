@@ -47,6 +47,55 @@
 @keyframes pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
 @keyframes loading-line { 0% { transform: scaleX(0); } 100% { transform: scaleX(1); } }
 
+/* =========================================
+   1. CORRECCIÓN: INDICADOR DE SCROLL EN MÓVIL
+   ========================================= */
+@media (max-width: 768px) {
+    .scroll-hint {
+        display: flex !important; /* Fuerza a que aparezca ignorando bloqueos previos */
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: 10px auto 25px auto; /* Espaciado para que no se pegue a las tarjetas */
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    .scroll-text {
+        font-size: 0.85rem;
+        color: #cca451; /* Dorado premium para que destaque */
+        margin-bottom: 8px;
+        letter-spacing: 1px;
+    }
+    
+    .scroll-icon {
+        display: block !important;
+    }
+}
+
+
+/* =========================================
+   2. CORRECCIÓN: DIFUMINADO DEL MODAL (PC vs MÓVIL)
+   ========================================= */
+
+/* Para PC (Pantallas grandes): Resplandor mucho más suave, amplio y difuminado */
+@media (min-width: 769px) {
+    .modal-content {
+        /* 1ra sombra: Oscura y profunda para separar del fondo.
+           2da sombra: Dorado muy sutil, con máxima expansión (120px) para que parezca luz ambiental y no una mancha.
+        */
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 120px rgba(204, 164, 81, 0.15) !important;
+    }
+}
+
+/* Para Celular: Mantiene el resplandor concentrado e intenso que se ve bien en pantallas pequeñas */
+@media (max-width: 768px) {
+    .modal-content {
+        box-shadow: 0 0 45px rgba(204, 164, 81, 0.4), 0 10px 30px rgba(0, 0, 0, 0.6) !important;
+    }
+}
+
 /* ==========================================================================
    0. FUENTES, VARIABLES DE COLOR Y RESET BÁSICO
    ========================================================================== */
@@ -1853,6 +1902,81 @@ body {
     }
 }
 
+/* Contenedor principal del título */
+.dental-gallery-header {
+    text-align: center;
+    padding: 3rem 1rem 2rem 1rem;
+    background-color: #ffffff; /* Asegura que el fondo siga la línea blanca */
+    width: 100%;
+}
+
+/* Título principal en dorado */
+.dental-title {
+    font-size: 3rem; /* Tamaño grande y elegante */
+    font-weight: 700;
+    color: #cca451; /* El tono dorado de tu diseño (ajusta si usas una variable específica) */
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+/* La línea divisoria dorada */
+.dental-divider {
+    border: none;
+    height: 2px;
+    background-color: #cca451; /* Mismo dorado del título */
+    width: 120px; /* Línea corta centrada */
+    margin: 1.2rem auto; 
+}
+
+/* Subtítulo con estilo técnico/clínico pero sofisticado */
+.dental-subtitle {
+    font-size: 0.85rem;
+    color: #777777; /* Gris sutil */
+    text-transform: uppercase;
+    letter-spacing: 4px; /* Espaciado amplio entre letras, clave para verse premium */
+    font-weight: 400;
+    margin: 0;
+}
+
+.dental-gallery-header {
+    text-align: center;
+    /* Redujimos el primer valor (arriba) de 3rem a 1rem */
+    padding: 1rem 1rem 2rem 1rem; 
+    background-color: #ffffff;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    /* Pegamos más el título hacia arriba en celulares */
+    .dental-gallery-header {
+        padding-top: 0.5rem; 
+    }
+
+    /* Ajusta el tamaño de la fuente para que se vea más proporcionado */
+    .dental-title {
+        font-size: 2rem;
+    }
+
+    /* REDUCE EL ESPACIO DE LA SECCIÓN ANTERIOR */
+    /* Busca la clase contenedora de tus tarjetas (probablemente sea esta u otra similar) */
+    .clinical-cases-slider-section {
+        padding-bottom: 1rem !important; /* Fuerza a reducir el hueco inferior */
+        margin-bottom: 0 !important;
+    }
+}
+
+/* Responsividad para móviles */
+@media (max-width: 768px) {
+    .dental-title {
+        font-size: 2.2rem;
+    }
+    .dental-subtitle {
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+        line-height: 1.4;
+    }
+}
+
 /* Animación suave al cambiar de video en móvil */
 @keyframes fadeInSlide {
     from { opacity: 0; transform: scale(0.95); }
@@ -2677,4 +2801,594 @@ body {
         0% { left: -100%; } 100% { left: 100%; }
     }
     .client-name { font-size: 2.5rem; }
+}
+
+/* --- ESTILOS DEL MODAL DE IMÁGENES --- */
+.image-modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 9999; /* Asegura que quede por encima del menú y todo lo demás */
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(15, 15, 15, 0.9); /* Fondo oscuro elegante */
+    backdrop-filter: blur(4px); /* Efecto de desenfoque premium */
+}
+
+/* La imagen expandida con resplandor dorado y proporción perfecta */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 90%;
+    max-width: 700px;
+    height: auto; /* FUNDAMENTAL: Evita que la imagen se deforme o estire */
+    max-height: 80vh; /* Evita que sea más alta que la pantalla */
+    object-fit: contain; /* Asegura que mantenga sus medidas originales */
+    border-radius: 12px;
+    
+    /* EL DIFUMINADO DORADO DETRÁS DE LA IMAGEN */
+    box-shadow: 0 0 50px rgba(204, 164, 81, 0.4), 0 10px 30px rgba(0, 0, 0, 0.6);
+    animation: zoomIn 0.3s ease;
+}
+
+/* Subtítulo renovado: Estilo "Píldora" Premium */
+#modalCaption {
+    margin: 25px auto;
+    display: table; /* Hace que el contenedor abrace exactamente el texto */
+    color: #ffffff; /* Texto blanco para mejor lectura */
+    padding: 8px 25px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    
+    /* Fondo dorado semitransparente con borde sutil */
+    background: rgba(204, 164, 81, 0.15); 
+    border: 1px solid rgba(204, 164, 81, 0.4); 
+    border-radius: 50px; /* Bordes totalmente redondeados */
+    
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    animation: zoomIn 0.3s ease;
+}
+/* El botón de cerrar (la X) */
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: #cca451; /* Cambia a dorado al pasar el mouse */
+    text-decoration: none;
+}
+
+/* Indicador de que las imágenes del slider son clickeables */
+.case-image-wrapper img {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* Pequeño zoom al pasar el mouse por las fotos del slider */
+.case-image-wrapper img:hover {
+    transform: scale(1.03);
+}
+
+/* Animación de entrada */
+@keyframes zoomIn {
+    from {transform: scale(0.9); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
+}
+
+/* Ajustes para celulares */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+    }
+    .close-modal {
+        top: 15px;
+        right: 20px;
+    }
+}
+
+/* =========================================
+   CENTRAR REDES SOCIALES EN MÓVIL (FOOTER)
+   ========================================= */
+@media (max-width: 768px) {
+    .footer-socials {
+        display: flex !important;
+        justify-content: center !important; /* Centra los elementos horizontalmente */
+        align-items: center;
+        width: 100%;
+        gap: 15px; /* Ajusta este valor si quieres más o menos espacio entre los círculos */
+        margin-top: 15px; /* Un pequeño respiro visual respecto al texto anterior */
+    }
+}
+
+/* ==========================================================================
+   1. REGLAS GLOBALES Y ANTI-BUG (Evita espacios en blanco laterales)
+   ========================================================================== */
+html, body {
+    overflow-x: hidden; 
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* ==========================================================================
+   2. SECCIÓN PROCEDIMIENTOS (Tarjetas 100% Abiertas, Fotos Completas)
+   ========================================================================== */
+.services-section {
+    padding: 60px 20px;
+    background-color: #fcfcfc; 
+}
+
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.services-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.elegant-title {
+    font-size: 2.5rem;
+    color: #c5a059; 
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.section-subtitle {
+    font-size: 1rem;
+    color: #666;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Grid adaptativo (PC y Móvil) */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    align-items: start;
+}
+
+/* Estructura estática de la Tarjeta */
+.serv-card {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: default; 
+}
+
+.serv-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(197, 160, 89, 0.15);
+}
+
+/* CONTENEDOR DE IMAGEN (Ajustado para mostrar TODO sin recortes) */
+.serv-img-wrapper {
+    position: relative;
+    width: 100%;
+    height: auto !important; /* Permite que la imagen crezca lo necesario */
+    overflow: hidden;
+}
+
+.serv-img-wrapper img {
+    width: 100%;
+    height: auto !important; /* Muestra la imagen completita */
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.serv-card:hover .serv-img-wrapper img {
+    transform: scale(1.03); /* Zoom muy sutil para no perder textos de los bordes */
+}
+
+/* Título superpuesto en la foto */
+.serv-title-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 40%, rgba(0, 0, 0, 0));
+    padding: 30px 20px 15px 20px;
+    text-align: left;
+    pointer-events: none; /* Evita que el texto interfiera si tocan la imagen */
+}
+
+.serv-title-overlay h3 {
+    color: #ffffff;
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* CUERPO DE PRECIOS (Forzado a estar siempre visible) */
+.serv-details {
+    display: block !important; 
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
+    max-height: none !important;
+    padding: 25px 25px 30px 25px;
+    background: #ffffff;
+    flex-grow: 1; /* Iguala las alturas de las tarjetas blancas */
+}
+
+.price-list {
+    display: block !important;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.price-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px dashed #d1d1d1;
+    transition: background 0.2s ease;
+}
+
+.price-list li:last-child {
+    border-bottom: none;
+}
+
+.service-name {
+    color: #2c2c2c !important;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.service-price {
+    color: #c5a059 !important; 
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+.price-list li:hover .service-name {
+    color: #000000 !important;
+}
+
+/* Footer de Medios de Pago */
+.payment-footer {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.payment-card {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    padding: 15px 30px;
+    border-radius: 50px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+.payment-icon-wrapper { font-size: 1.5rem; margin-right: 15px; }
+.payment-label { font-weight: 600; color: #2c2c2c; margin-right: 5px; }
+.payment-methods { color: #666; }
+
+
+/* ==========================================================================
+   3. GALERÍA DE VIDEOS (Estructura y Títulos)
+   ========================================================================== */
+.video-gallery-section {
+    position: relative;
+    padding: 40px 0 90px 0;
+    overflow: hidden; 
+}
+
+.video-gallery-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px; 
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.dental-gallery-header {
+    text-align: center;
+    padding: 1rem 1rem 2rem 1rem; 
+    background-color: #ffffff;
+    width: 100%;
+}
+
+.dental-title {
+    font-size: 3rem; 
+    font-weight: 700;
+    color: #cca451; 
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.dental-divider {
+    border: none;
+    height: 2px;
+    background-color: #cca451; 
+    width: 120px; 
+    margin: 1.2rem auto; 
+}
+
+.dental-subtitle {
+    font-size: 0.85rem;
+    color: #777777; 
+    text-transform: uppercase;
+    letter-spacing: 4px; 
+    font-weight: 400;
+    margin: 0;
+}
+
+.mobile-switch-video-btn {
+    display: none; 
+}
+
+
+/* ==========================================================================
+   4. MODALES (Imágenes Clínicas y Videos)
+   ========================================================================== */
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999; 
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(15, 15, 15, 0.9); 
+    backdrop-filter: blur(4px); 
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 90%;
+    max-width: 700px;
+    height: auto; 
+    max-height: 80vh; 
+    object-fit: contain; 
+    border-radius: 12px;
+    animation: zoomIn 0.3s ease;
+}
+
+#modalCaption {
+    margin: 25px auto;
+    display: table; 
+    color: #ffffff; 
+    padding: 8px 25px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    background: rgba(204, 164, 81, 0.15); 
+    border: 1px solid rgba(204, 164, 81, 0.4); 
+    border-radius: 50px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    animation: zoomIn 0.3s ease;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: #cca451; 
+    text-decoration: none;
+}
+
+.case-image-wrapper img {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.case-image-wrapper img:hover {
+    transform: scale(1.03);
+}
+
+@keyframes zoomIn {
+    from {transform: scale(0.9); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
+}
+
+
+/* ==========================================================================
+   5. RESPONSIVE Y REGLAS ESPECÍFICAS PARA PC Y MÓVIL
+   ========================================================================== */
+
+/* ---> SOLO PARA PC (Pantallas Grandes) <--- */
+@media (min-width: 769px) {
+    .modal-content {
+        /* Resplandor amplio y elegante en PC */
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 120px rgba(204, 164, 81, 0.15) !important;
+    }
+}
+
+/* ---> SOLO PARA CELULARES (Pantallas Pequeñas) <--- */
+@media (max-width: 768px) {
+    
+    /* Ajustes Sección Títulos y Casos Clínicos */
+    .dental-gallery-header { padding-top: 0.5rem; }
+    .dental-title { font-size: 2rem; }
+    .clinical-cases-slider-section { padding-bottom: 1rem !important; margin-bottom: 0 !important; }
+    
+    /* Forzar aparición de 'Desliza para ver más' */
+    .scroll-hint {
+        display: flex !important; 
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: 10px auto 25px auto; 
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    .scroll-text { font-size: 0.85rem; color: #cca451; margin-bottom: 8px; letter-spacing: 1px; }
+    .scroll-icon { display: block !important; }
+
+    /* Modal Resplandor Móvil */
+    .modal-content {
+        box-shadow: 0 0 45px rgba(204, 164, 81, 0.4), 0 10px 30px rgba(0, 0, 0, 0.6) !important;
+        width: 95%;
+    }
+    .close-modal { top: 15px; right: 20px; }
+
+    /* Lógica Botón Flotante Galería de Videos */
+    .video-gallery-container { gap: 0; }
+    .video-gallery-container .creative-video-wrapper { display: none; }
+    .video-gallery-container .creative-video-wrapper.active-mobile-video {
+        display: block;
+        animation: fadeInSlide 0.5s ease forwards;
+    }
+    
+    .mobile-switch-video-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        position: absolute; 
+        bottom: 20px; 
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(17, 17, 17, 0.9);
+        border: 1px solid rgba(197, 160, 89, 0.5);
+        color: #d4af37;
+        padding: 12px 25px;
+        border-radius: 30px;
+        font-family: 'Courier New', Courier, monospace; 
+        font-size: 0.9rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        z-index: 10; 
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        backdrop-filter: blur(10px);
+        cursor: pointer;
+    }
+    
+    .mobile-switch-video-btn svg { width: 20px; height: 20px; }
+    @keyframes fadeInSlide { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+
+    /* Centrado de Redes Sociales en Footer */
+    .footer-socials {
+        display: flex !important;
+        justify-content: center !important; 
+        align-items: center;
+        width: 100%;
+        gap: 15px; 
+        margin-top: 15px; 
+    }
+}
+
+/* ---> AJUSTES FINOS PARA CELULARES MUY PEQUEÑOS <--- */
+@media (max-width: 480px) {
+    .elegant-title { font-size: 2rem; }
+    .services-grid { gap: 25px; }
+    .serv-details { padding: 20px; }
+    .payment-card { flex-direction: column; text-align: center; border-radius: 20px; padding: 15px; }
+    .payment-icon-wrapper { margin-right: 0; margin-bottom: 5px; }
+}
+
+/* ==========================================================================
+   6. CENTRAR LA ÚLTIMA TARJETA EN PC (4ta Tarjeta)
+   ========================================================================== */
+/* Se activa solo en pantallas grandes donde caben las 3 columnas */
+@media (min-width: 1080px) {
+    .services-grid .serv-card:nth-child(4):last-child {
+        grid-column: 2; /* Obliga a la tarjeta a posicionarse en la columna 2 (centro) */
+    }
+}
+
+/* Corrección de estética para el subtítulo de ubicación */
+.section-subtitle {
+    font-family: 'Montserrat', sans-serif; /* Si no tienes esta, usa 'Helvetica Neue' o 'Arial' */
+    font-weight: 300;           /* Peso ligero para elegancia */
+    font-size: 0.9rem;          /* Un poco más pequeño para que no compita con el título */
+    line-height: 1.6;           /* Más aire entre líneas */
+    letter-spacing: 1.5px;      /* Espaciado para que se vea premium */
+    color: #a0a0a0;             /* Un gris suave en lugar de blanco puro */
+    margin-bottom: 30px;        /* Espacio para despegarlo de la dirección */
+    max-width: 450px;           /* Para que el texto no sea tan largo y sea más legible */
+}
+
+/* Corrección de la cabecera de procedimientos */
+.services-header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 0 20px;
+}
+
+.elegant-title {
+    font-family: 'Playfair Display', serif; /* Si no tienes esta, usa 'Georgia' o una 'Serif' elegante */
+    font-size: 2.5rem;
+    color: #c5a059; /* El dorado que usas */
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: #888; /* Un gris suave, mucho más elegante que el blanco o negro puro */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-top: 0;
+}
+
+.services-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Esto fuerza a que todo el bloque se centre */
+    justify-content: center;
+}
+
+/* --- CORRECCIÓN PARA CELULARES --- */
+@media (max-width: 768px) {
+    .elegant-title {
+        font-size: 1.8rem !important; /* Reduce el tamaño del título en móvil */
+        letter-spacing: 1px !important;
+        word-break: break-word;        /* Permite que la palabra se ajuste */
+    }
+
+    .section-subtitle {
+        font-size: 0.9rem !important;  /* Reduce el subtítulo para que no se corte */
+        padding: 0 10px;               /* Da un poco de aire a los lados */
+        letter-spacing: 1px !important;
+    }
+
+    .services-header {
+        padding: 0 15px !important;    /* Ajusta el margen general */
+    }
 }

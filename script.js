@@ -143,3 +143,35 @@ function toggleService(clickedCard) {
         clickedCard.classList.add('active');
     }
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Obtenemos los elementos del modal
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const captionText = document.getElementById("modalCaption");
+    const closeBtn = document.querySelector(".close-modal");
+    
+    // Obtenemos TODAS las imágenes dentro de los casos clínicos
+    const images = document.querySelectorAll(".case-image-wrapper img");
+
+    // Recorremos cada imagen y le agregamos el evento de clic
+    images.forEach(img => {
+        img.addEventListener("click", function() {
+            modal.style.display = "block";
+            modalImg.src = this.src; // Pasa la ruta de la imagen clickeada al modal
+            captionText.innerHTML = this.alt; // Usa el texto alternativo (alt) como leyenda
+        });
+    });
+
+    // Cerrar el modal al hacer clic en la "X"
+    closeBtn.addEventListener("click", function() {
+        modal.style.display = "none";
+    });
+
+    // Cerrar el modal si el usuario hace clic fuera de la imagen (en el fondo oscuro)
+    modal.addEventListener("click", function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+});

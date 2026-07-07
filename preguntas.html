@@ -52,6 +52,22 @@
             gap: 20px;
         }
 
+        /* Títulos de Categoría añadidos para organizar las preguntas */
+        .faq-category-title {
+            color: #d4af37;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 20px 0 5px 0;
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 10px;
+        }
+
+        .faq-category-title:first-child {
+            margin-top: 0;
+        }
+
         .faq-item-card {
             background: #fdfdfd;
             border: 1px solid #eaeaea;
@@ -115,6 +131,8 @@
             position: relative;
             width: 24px;
             height: 24px;
+            flex-shrink: 0; /* Evita que el icono se aplaste en móviles */
+            margin-left: 15px;
         }
         .icon-cross::before, .icon-cross::after {
             content: ''; position: absolute; background-color: #222; transition: all 0.4s ease;
@@ -248,53 +266,178 @@
                         Preguntas <br>
                         <span class="gradient-text">Frecuentes</span>
                     </h1>
-                    <p class="faq-subtitle">Toda la información técnica y procesos de nuestro laboratorio, resuelta de forma precisa y directa.</p>
+                    <p class="faq-subtitle">Toda la información sobre nuestros procesos, ubicaciones, precios y tiempos de entrega, resuelta de forma rápida y directa.</p>
                 </div>
 
                 <!-- Columna Derecha: Acordeón Animado -->
                 <div class="faq-accordion-column">
                     
+                    <!-- CATEGORÍA: INFORMACIÓN GENERAL -->
+                    <h3 class="faq-category-title">Información General</h3>
+
                     <!-- Pregunta 1 -->
                     <div class="faq-item-card">
                         <button class="faq-question-btn">
-                            ¿Cuáles son los tiempos de entrega para trabajos en Zirconio?
+                            ¿Dónde están ubicados?
                             <span class="icon-cross"></span>
                         </button>
                         <div class="faq-answer-content">
-                            <p>Los tiempos de entrega estándar son de 3 a 5 días hábiles, dependiendo de la complejidad de la rehabilitación y la validación del diseño en CAD/CAM.</p>
+                            <p>Estamos ubicados cerca a las Canchas Panamericanas, en el barrio Champagnat (también conocido como El Cedro).<br><br>
+                            📍 Cra. 31A #8-61<br>
+                            Segundo piso – Consultorio 2<br>
+                            Barrio Champagnat / El Cedro.<br><br>
+                            <em>(Se envía la ubicación exacta por WhatsApp al agendar).</em></p>
                         </div>
                     </div>
 
                     <!-- Pregunta 2 -->
                     <div class="faq-item-card">
                         <button class="faq-question-btn">
-                            ¿Tienen cobertura de envíos para clínicas en Cali y alrededores?
+                            ¿Cuál es el horario de atención?
                             <span class="icon-cross"></span>
                         </button>
                         <div class="faq-answer-content">
-                            <p>Sí, contamos con logística de recogida y entrega directa en la ciudad de Cali. Para zonas aledañas, coordinamos envíos seguros garantizando la integridad de las prótesis.</p>
+                            <p>• <strong>Lunes a viernes:</strong> 9:00 a. m. a 4:00 p. m.<br>
+                            • <strong>Sábados:</strong> 9:00 a. m. a 2:00 p. m.</p>
                         </div>
                     </div>
 
                     <!-- Pregunta 3 -->
                     <div class="faq-item-card">
                         <button class="faq-question-btn">
-                            ¿Qué garantía y soporte post-venta ofrecen?
+                            ¿Atienden con cita previa o reciben pacientes sin cita?
                             <span class="icon-cross"></span>
                         </button>
                         <div class="faq-answer-content">
-                            <p>Ofrecemos garantía total sobre defectos de fabricación o fallos en los materiales. Nuestro equipo de soporte acompaña cada caso para asegurar el ajuste perfecto en el paciente.</p>
+                            <p>Sí, atendemos <strong>únicamente con cita previa</strong> para garantizar el mejor servicio y tiempo de dedicación a cada paciente.</p>
                         </div>
                     </div>
 
                     <!-- Pregunta 4 -->
                     <div class="faq-item-card">
                         <button class="faq-question-btn">
-                            ¿En qué formato debo enviar los escaneos intraorales?
+                            ¿Ustedes toman radiografías?
                             <span class="icon-cross"></span>
                         </button>
                         <div class="faq-answer-content">
-                            <p>Aceptamos archivos en formato .STL y .PLY. Puedes cargarlos directamente a nuestro portal o enviarlos a través de nuestro correo técnico especializado.</p>
+                            <p>No tomamos radiografías directamente; sin embargo, podemos recomendarte un lugar donde realizártelas.<br><br>
+                            El paciente puede tomárselas donde le quede más fácil. Una vez las tenga, debe enviarlas a nuestro correo electrónico: <br>
+                            <strong>kclaboratoriodental@gmail.com</strong></p>
+                        </div>
+                    </div>
+
+                    <!-- CATEGORÍA: PAGOS -->
+                    <h3 class="faq-category-title">Pagos</h3>
+
+                    <!-- Pregunta 5 -->
+                    <div class="faq-item-card">
+                        <button class="faq-question-btn">
+                            ¿Qué medios de pago reciben?
+                            <span class="icon-cross"></span>
+                        </button>
+                        <div class="faq-answer-content">
+                            <p>Recibimos las siguientes formas de pago:<br>
+                            • Nequi.<br>
+                            • Transferencia Bancolombia.<br>
+                            • Llave BRE-B.<br>
+                            • Efectivo.<br>
+                            • Tarjetas débito y crédito (Contamos con datáfono).</p>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 6 -->
+                    <div class="faq-item-card">
+                        <button class="faq-question-btn">
+                            ¿Cuáles son las modalidades de pago para tratamientos y prótesis?
+                            <span class="icon-cross"></span>
+                        </button>
+                        <div class="faq-answer-content">
+                            <p>Para tratamientos como extracciones, calzas, resinas, diseños de sonrisa, mini diseños, entre otros, el pago es <strong>de contado</strong>.<br><br>
+                            Para prótesis, coronas, etc., se cancela el <strong>50% al iniciar</strong> el tratamiento y el <strong>50% restante el día de la entrega</strong>.</p>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 7 -->
+                    <div class="faq-item-card">
+                        <button class="faq-question-btn">
+                            ¿Cuál es el tiempo de entrega de las prótesis?
+                            <span class="icon-cross"></span>
+                        </button>
+                        <div class="faq-answer-content">
+                            <p>• <strong>Prótesis en general:</strong> Aproximadamente 1 semana, con un máximo de 12 días.<br>
+                            • <strong>Acker Flexible:</strong> 4 días.</p>
+                        </div>
+                    </div>
+
+                    <!-- CATEGORÍA: VALORACIÓN -->
+                    <h3 class="faq-category-title">Valoración</h3>
+
+                    <!-- Pregunta 8 -->
+                    <div class="faq-item-card">
+                        <button class="faq-question-btn">
+                            ¿La valoración odontológica tiene algún costo?
+                            <span class="icon-cross"></span>
+                        </button>
+                        <div class="faq-answer-content">
+                            <p>No, nuestra valoración inicial <strong>no tiene ningún costo</strong>.</p>
+                        </div>
+                    </div>
+
+                    <!-- CATEGORÍA: PRECIOS -->
+                    <h3 class="faq-category-title">Precios</h3>
+
+                    <!-- Pregunta 9 -->
+                    <div class="faq-item-card">
+                        <button class="faq-question-btn">
+                            ¿Cuánto cuestan las prótesis dentales y coronas?
+                            <span class="icon-cross"></span>
+                        </button>
+                        <div class="faq-answer-content">
+                            <p><strong>Prótesis Totales:</strong><br>
+                            • Acrílica: $300.000<br>
+                            • Alto impacto: $450.000<br>
+                            • Biocaracterizada: $550.000<br><br>
+                            
+                            <strong>Prótesis Parciales:</strong><br>
+                            • Flexible: $400.000<br>
+                            • Acker Flexible: $300.000<br><br>
+                            
+                            <strong>Coronas:</strong><br>
+                            • Metal cerámica: $600.000<br>
+                            • Zirconio: $880.000</p>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 10 -->
+                    <div class="faq-item-card">
+                        <button class="faq-question-btn">
+                            ¿Cuánto cuesta una extracción dental?
+                            <span class="icon-cross"></span>
+                        </button>
+                        <div class="faq-answer-content">
+                            <p>El valor de las extracciones dentales es <strong>desde $70.000</strong>. Lo ideal es que el paciente cuente con una radiografía para poder valorar el procedimiento de forma precisa.</p>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 11 -->
+                    <div class="faq-item-card">
+                        <button class="faq-question-btn">
+                            ¿Realizan calzas (resinas)? ¿Cuál es el precio?
+                            <span class="icon-cross"></span>
+                        </button>
+                        <div class="faq-answer-content">
+                            <p>Sí, realizamos calzas. El valor es <strong>desde $60.000</strong> y puede variar dependiendo del tamaño de la caries.</p>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 12 -->
+                    <div class="faq-item-card">
+                        <button class="faq-question-btn">
+                            ¿Cuánto cuesta el retiro de cordales?
+                            <span class="icon-cross"></span>
+                        </button>
+                        <div class="faq-answer-content">
+                            <p>Para el retiro de cordales es estrictamente <strong>necesario contar con una radiografía</strong>. Esto nos permite valorar el caso específico y realizar una cotización exacta.</p>
                         </div>
                     </div>
 
