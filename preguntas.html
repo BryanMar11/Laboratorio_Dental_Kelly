@@ -3,20 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centro de Ayuda | Lab. Kelly Cabrera</title>
+    <title>Preguntas Frecuentes | Kelly Cabrera Lab</title>
     <!-- Tu hoja de estilos principal (para mantener la navbar) -->
     <link rel="stylesheet" href="style.css">
     
     <style>
         /* =========================================
+           SELECTOR DE IDIOMA (CENTRADO)
+           ========================================= */
+        .top-language-switcher {
+            background-color: #111; 
+            padding: 8px 0;
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+            gap: 15px;
+            font-size: 0.9rem;
+        }
+
+        .top-language-switcher a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .top-language-switcher a:hover,
+        .top-language-switcher a.active-lang {
+            color: #d4af37; /* Dorado inconfundible */
+        }
+
+        .top-language-switcher span {
+            color: #555;
+            user-select: none;
+        }
+
+        /* Efecto de transición suave al cambiar de idioma */
+        .fade-text {
+            animation: fadeInText 0.4s ease-in-out;
+        }
+
+        @keyframes fadeInText {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* =========================================
            MODO CLARO (ALTA TECNOLOGÍA) PARA FAQ
            ========================================= */
         .faq-page-light {
-            background-color: #ffffff; /* Fondo blanco crudo */
+            background-color: #ffffff; 
             color: #1a1a1a;
             padding: 120px 5% 80px;
             min-height: 80vh;
-            /* Animación de entrada para toda la sección */
             animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -29,14 +70,14 @@
         }
 
         .faq-header-column .ultra-title {
-            color: #161616; /* Título oscuro */
+            color: #161616;
             font-size: 3.5rem;
             line-height: 1.1;
             margin-bottom: 20px;
         }
 
         .faq-header-column .gradient-text {
-            color: #d4af37; /* Tu dorado inconfundible */
+            color: #d4af37; 
         }
 
         .faq-subtitle {
@@ -52,7 +93,6 @@
             gap: 20px;
         }
 
-        /* Títulos de Categoría añadidos para organizar las preguntas */
         .faq-category-title {
             color: #d4af37;
             font-size: 1.1rem;
@@ -79,14 +119,12 @@
             overflow: hidden;
         }
 
-        /* Efecto flotante al pasar el mouse (Estilo Tech) */
         .faq-item-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
             border-color: rgba(212, 175, 55, 0.5);
         }
 
-        /* Línea lateral dorada que aparece en hover */
         .faq-item-card::before {
             content: '';
             position: absolute;
@@ -131,7 +169,7 @@
             position: relative;
             width: 24px;
             height: 24px;
-            flex-shrink: 0; /* Evita que el icono se aplaste en móviles */
+            flex-shrink: 0; 
             margin-left: 15px;
         }
         .icon-cross::before, .icon-cross::after {
@@ -166,7 +204,7 @@
 
         /* --- FOOTER CREATIVO (MINIMALISTA Y CENTRADO) --- */
         .minimal-return-footer {
-            background-color: #111; /* Regresa al tema oscuro para cerrar la página */
+            background-color: #111;
             padding: 60px 20px;
             display: flex;
             justify-content: center;
@@ -192,7 +230,6 @@
             transition: color 0.4s ease;
         }
 
-        /* Efecto de llenado estilo terminal/hacker fluido */
         .creative-return-btn::before {
             content: '';
             position: absolute;
@@ -219,7 +256,7 @@
         }
 
         .creative-return-btn:hover .return-arrow {
-            transform: translateX(-8px); /* La flecha se mueve indicando "atrás" */
+            transform: translateX(-8px); 
         }
 
         /* Responsive */
@@ -238,23 +275,32 @@
 <body>
 
     <!-- =========================================
-         NAVBAR (Exactamente igual a tu index)
+         SELECTOR DE IDIOMA (SUPERIOR Y CENTRADO)
+         ========================================= -->
+    <div class="top-language-switcher">
+        <a id="btn-es" class="active-lang">ES</a>
+        <span>|</span>
+        <a id="btn-en">EN</a>
+    </div>
+
+    <!-- =========================================
+         NAVBAR
          ========================================= -->
     <header class="main-header">
-        <a href="index.html#inicio" class="logo-creative">
-            <img src="img/Navbar-removebg-preview.png" alt="Logo Kelly Cabrera" class="logo-img">
+        <a href="index.html#home" class="logo-creative">
+            <img src="img/Navbar-removebg-preview.png" alt="Kelly Cabrera Logo" class="logo-img">
         </a>
         <nav class="nav-menu" id="nav-menu">
-            <a href="index.html#inicio">Inicio</a>
-            <a href="index.html#procedimientos">Procedimientos</a>
-            <a href="index.html#sobre-mi">Sobre Mí</a> 
-            <a href="index.html#testimonios">Testimonios</a>
-            <a href="https://wa.me/573027084024" class="btn-nav">Contáctenos</a>
+            <a href="index.html#home" data-i18n="nav_home">Inicio</a>
+            <a href="index.html#procedures" data-i18n="nav_procedures">Procedimientos</a>
+            <a href="index.html#about-me" data-i18n="nav_about">Sobre Mí</a> 
+            <a href="index.html#testimonials" data-i18n="nav_testimonials">Testimonios</a>
+            <a href="https://wa.me/573027084024" class="btn-nav" data-i18n="nav_contact">Contáctanos</a>
         </nav>
     </header>
 
     <!-- =========================================
-         SECCIÓN FAQ (Modo Claro & Animado)
+         SECCIÓN FAQ 
          ========================================= -->
     <main class="faq-page-light">
         <section class="creative-faq-section">
@@ -262,84 +308,84 @@
                 
                 <!-- Columna Izquierda: Título -->
                 <div class="faq-header-column">
-                    <h1 class="ultra-title">
+                    <h1 class="ultra-title" data-i18n="title_main">
                         Preguntas <br>
                         <span class="gradient-text">Frecuentes</span>
                     </h1>
-                    <p class="faq-subtitle">Toda la información sobre nuestros procesos, ubicaciones, precios y tiempos de entrega, resuelta de forma rápida y directa.</p>
+                    <p class="faq-subtitle" data-i18n="subtitle">Toda la información sobre nuestros procesos, ubicaciones, precios y tiempos de entrega, resuelta de manera rápida y directa.</p>
                 </div>
 
                 <!-- Columna Derecha: Acordeón Animado -->
                 <div class="faq-accordion-column">
                     
                     <!-- CATEGORÍA: INFORMACIÓN GENERAL -->
-                    <h3 class="faq-category-title">Información General</h3>
+                    <h3 class="faq-category-title" data-i18n="cat_general">Información General</h3>
 
                     <!-- Pregunta 1 -->
                     <div class="faq-item-card">
                         <button class="faq-question-btn">
-                            ¿Dónde están ubicados?
+                            <span data-i18n="q1">¿Dónde están ubicados?</span>
                             <span class="icon-cross"></span>
                         </button>
                         <div class="faq-answer-content">
-                            <p>Estamos ubicados cerca a las Canchas Panamericanas, en el barrio Champagnat (también conocido como El Cedro).<br><br>
+                            <p data-i18n="a1">Estamos ubicados por las Canchas Panamericanas, en el barrio Champagnat (también conocido como el Cedro).<br><br>
                             📍 Cra. 31A #8-61<br>
                             Segundo piso – Consultorio 2<br>
                             Barrio Champagnat / El Cedro.<br><br>
-                            <em>(Se envía la ubicación exacta por WhatsApp al agendar).</em></p>
+                            <em>(La ubicación exacta se envía por WhatsApp al agendar).</em></p>
                         </div>
                     </div>
 
                     <!-- Pregunta 2 -->
                     <div class="faq-item-card">
                         <button class="faq-question-btn">
-                            ¿Cuál es el horario de atención?
+                            <span data-i18n="q2">¿Cuál es el horario de atención?</span>
                             <span class="icon-cross"></span>
                         </button>
                         <div class="faq-answer-content">
-                            <p>• <strong>Lunes a viernes:</strong> 9:00 a. m. a 4:00 p. m.<br>
-                            • <strong>Sábados:</strong> 9:00 a. m. a 2:00 p. m.</p>
+                            <p data-i18n="a2">• <strong>Lunes a Viernes:</strong> 9:00 a.m. a 4:00 p.m.<br>
+                            • <strong>Sábados:</strong> 9:00 a.m. a 2:00 p.m.</p>
                         </div>
                     </div>
 
                     <!-- Pregunta 3 -->
                     <div class="faq-item-card">
                         <button class="faq-question-btn">
-                            ¿Atienden con cita previa o reciben pacientes sin cita?
+                            <span data-i18n="q3">¿Atienden por orden de llegada o con cita?</span>
                             <span class="icon-cross"></span>
                         </button>
                         <div class="faq-answer-content">
-                            <p>Sí, atendemos <strong>únicamente con cita previa</strong> para garantizar el mejor servicio y tiempo de dedicación a cada paciente.</p>
+                            <p data-i18n="a3">Sí, atendemos <strong>únicamente con cita previa</strong> para garantizar el mejor servicio y el tiempo dedicado a cada paciente.</p>
                         </div>
                     </div>
 
                     <!-- Pregunta 4 -->
                     <div class="faq-item-card">
                         <button class="faq-question-btn">
-                            ¿Ustedes toman radiografías?
+                            <span data-i18n="q4">¿Toman radiografías?</span>
                             <span class="icon-cross"></span>
                         </button>
                         <div class="faq-answer-content">
-                            <p>No tomamos radiografías directamente; sin embargo, podemos recomendarte un lugar donde realizártelas.<br><br>
-                            El paciente puede tomárselas donde le quede más fácil. Una vez las tenga, debe enviarlas a nuestro correo electrónico: <br>
+                            <p data-i18n="a4">No tomamos radiografías directamente; sin embargo, te podemos recomendar un lugar para hacértelas.<br><br>
+                            El paciente puede tomárselas donde le quede más fácil. Una vez las tenga, debe enviarlas a nuestro correo: <br>
                             <strong>kclaboratoriodental@gmail.com</strong></p>
                         </div>
                     </div>
 
                     <!-- CATEGORÍA: PAGOS -->
-                    <h3 class="faq-category-title">Pagos</h3>
+                    <h3 class="faq-category-title" data-i18n="cat_payments">Pagos</h3>
 
                     <!-- Pregunta 5 -->
                     <div class="faq-item-card">
                         <button class="faq-question-btn">
-                            ¿Qué medios de pago reciben?
+                            <span data-i18n="q5">¿Qué métodos de pago manejan?</span>
                             <span class="icon-cross"></span>
                         </button>
                         <div class="faq-answer-content">
-                            <p>Recibimos las siguientes formas de pago:<br>
+                            <p data-i18n="a5">Aceptamos los siguientes métodos de pago:<br>
                             • Nequi.<br>
                             • Transferencia Bancolombia.<br>
-                            • Llave BRE-B.<br>
+                            • Clave BRE-B.<br>
                             • Efectivo.<br>
                             • Tarjetas débito y crédito (Contamos con datáfono).</p>
                         </div>
@@ -348,62 +394,62 @@
                     <!-- Pregunta 6 -->
                     <div class="faq-item-card">
                         <button class="faq-question-btn">
-                            ¿Cuáles son las modalidades de pago para tratamientos y prótesis?
+                            <span data-i18n="q6">¿Cómo es el método de pago para tratamientos y prótesis?</span>
                             <span class="icon-cross"></span>
                         </button>
                         <div class="faq-answer-content">
-                            <p>Para tratamientos como extracciones, calzas, resinas, diseños de sonrisa, mini diseños, entre otros, el pago es <strong>de contado</strong>.<br><br>
-                            Para prótesis, coronas, etc., se cancela el <strong>50% al iniciar</strong> el tratamiento y el <strong>50% restante el día de la entrega</strong>.</p>
+                            <p data-i18n="a6">Para tratamientos como extracciones, calzas, resinas, diseños de sonrisa, mini diseños, entre otros, el pago es <strong>de contado</strong>.<br><br>
+                            Para prótesis, coronas, etc., se abona el <strong>50% al iniciar</strong> el tratamiento y el <strong>50% restante el día de la entrega</strong>.</p>
                         </div>
                     </div>
 
                     <!-- Pregunta 7 -->
                     <div class="faq-item-card">
                         <button class="faq-question-btn">
-                            ¿Cuál es el tiempo de entrega de las prótesis?
+                            <span data-i18n="q7">¿Cuánto tiempo tardan en entregar una prótesis?</span>
                             <span class="icon-cross"></span>
                         </button>
                         <div class="faq-answer-content">
-                            <p>• <strong>Prótesis en general:</strong> Aproximadamente 1 semana, con un máximo de 12 días.<br>
-                            • <strong>Acker Flexible:</strong> 4 días.</p>
+                            <p data-i18n="a7">• <strong>Prótesis en general:</strong> Aproximadamente 1 semana, con un máximo de 12 días.<br>
+                            • <strong>Acker flexible:</strong> 4 días.</p>
                         </div>
                     </div>
 
                     <!-- CATEGORÍA: VALORACIÓN -->
-                    <h3 class="faq-category-title">Valoración</h3>
+                    <h3 class="faq-category-title" data-i18n="cat_evaluation">Valoración</h3>
 
                     <!-- Pregunta 8 -->
                     <div class="faq-item-card">
                         <button class="faq-question-btn">
-                            ¿La valoración odontológica tiene algún costo?
+                            <span data-i18n="q8">¿La valoración odontológica tiene algún costo?</span>
                             <span class="icon-cross"></span>
                         </button>
                         <div class="faq-answer-content">
-                            <p>No, nuestra valoración inicial <strong>no tiene ningún costo</strong>.</p>
+                            <p data-i18n="a8">No, nuestra valoración inicial es <strong>totalmente gratis</strong>.</p>
                         </div>
                     </div>
 
                     <!-- CATEGORÍA: PRECIOS -->
-                    <h3 class="faq-category-title">Precios</h3>
+                    <h3 class="faq-category-title" data-i18n="cat_prices">Precios</h3>
 
                     <!-- Pregunta 9 -->
                     <div class="faq-item-card">
                         <button class="faq-question-btn">
-                            ¿Cuánto cuestan las prótesis dentales y coronas?
+                            <span data-i18n="q9">¿Qué costo tienen las prótesis y coronas dentales?</span>
                             <span class="icon-cross"></span>
                         </button>
                         <div class="faq-answer-content">
-                            <p><strong>Prótesis Totales:</strong><br>
-                            • Acrílica: $300.000<br>
+                            <p data-i18n="a9"><strong>Prótesis Totales:</strong><br>
+                            • Acrílico: $300.000<br>
                             • Alto impacto: $450.000<br>
-                            • Biocaracterizada: $550.000<br><br>
+                            • Biocaracterizadas: $550.000<br><br>
                             
                             <strong>Prótesis Parciales:</strong><br>
-                            • Flexible: $400.000<br>
-                            • Acker Flexible: $300.000<br><br>
+                            • Flexibles: $400.000<br>
+                            • Acker flexible: $300.000<br><br>
                             
                             <strong>Coronas:</strong><br>
-                            • Metal cerámica: $600.000<br>
+                            • Metal-cerámica: $600.000<br>
                             • Zirconio: $880.000</p>
                         </div>
                     </div>
@@ -411,33 +457,33 @@
                     <!-- Pregunta 10 -->
                     <div class="faq-item-card">
                         <button class="faq-question-btn">
-                            ¿Cuánto cuesta una extracción dental?
+                            <span data-i18n="q10">¿Qué precio tiene una extracción dental?</span>
                             <span class="icon-cross"></span>
                         </button>
                         <div class="faq-answer-content">
-                            <p>El valor de las extracciones dentales es <strong>desde $70.000</strong>. Lo ideal es que el paciente cuente con una radiografía para poder valorar el procedimiento de forma precisa.</p>
+                            <p data-i18n="a10">El costo de las extracciones dentales comienza desde <strong>$70.000</strong>. Lo ideal es que el paciente cuente con una radiografía para poder evaluar el procedimiento con precisión.</p>
                         </div>
                     </div>
 
                     <!-- Pregunta 11 -->
                     <div class="faq-item-card">
                         <button class="faq-question-btn">
-                            ¿Realizan calzas (resinas)? ¿Cuál es el precio?
+                            <span data-i18n="q11">¿Hacen calzas (resinas)? ¿Qué precio tienen?</span>
                             <span class="icon-cross"></span>
                         </button>
                         <div class="faq-answer-content">
-                            <p>Sí, realizamos calzas. El valor es <strong>desde $60.000</strong> y puede variar dependiendo del tamaño de la caries.</p>
+                            <p data-i18n="a11">Sí, realizamos calzas. El precio inicia desde <strong>$60.000</strong> y puede variar según el tamaño de la caries.</p>
                         </div>
                     </div>
 
                     <!-- Pregunta 12 -->
                     <div class="faq-item-card">
                         <button class="faq-question-btn">
-                            ¿Cuánto cuesta el retiro de cordales?
+                            <span data-i18n="q12">¿Cuánto cuesta la extracción de cordales (muelas del juicio)?</span>
                             <span class="icon-cross"></span>
                         </button>
                         <div class="faq-answer-content">
-                            <p>Para el retiro de cordales es estrictamente <strong>necesario contar con una radiografía</strong>. Esto nos permite valorar el caso específico y realizar una cotización exacta.</p>
+                            <p data-i18n="a12">Para la extracción de cordales es estrictamente <strong>necesario contar con una radiografía</strong>. Esto nos permite evaluar el caso específico y brindar una cotización exacta.</p>
                         </div>
                     </div>
 
@@ -447,20 +493,22 @@
     </main>
 
     <!-- =========================================
-         FOOTER CREATIVO (Solo botón de retorno)
+         FOOTER CREATIVO 
          ========================================= -->
     <footer class="minimal-return-footer">
-        <a href="index.html" class="creative-return-btn">
+        <a href="index.html" class="creative-return-btn" data-i18n="btn_back">
             <span class="return-arrow">←</span> 
             Volver al inicio
         </a>
     </footer>
 
     <!-- =========================================
-         LÓGICA INTERACTIVA DEL ACORDEÓN
+         LÓGICA INTERACTIVA (ACORDEÓN + IDIOMAS)
          ========================================= -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            
+            // --- 1. LÓGICA DEL ACORDEÓN ---
             const faqCards = document.querySelectorAll(".faq-item-card");
 
             faqCards.forEach(card => {
@@ -488,6 +536,136 @@
                         answer.style.opacity = 0;
                     }
                 });
+            });
+
+            // --- 2. LÓGICA DE TRADUCCIÓN (i18n) ---
+            const translations = {
+                es: {
+                    title_main: "Preguntas <br><span class='gradient-text'>Frecuentes</span>",
+                    subtitle: "Toda la información sobre nuestros procesos, ubicaciones, precios y tiempos de entrega, resuelta de manera rápida y directa.",
+                    nav_home: "Inicio",
+                    nav_procedures: "Procedimientos",
+                    nav_about: "Sobre Mí",
+                    nav_testimonials: "Testimonios",
+                    nav_contact: "Contáctanos",
+                    cat_general: "Información General",
+                    q1: "¿Dónde están ubicados?",
+                    a1: "Estamos ubicados por las Canchas Panamericanas, en el barrio Champagnat (también conocido como el Cedro).<br><br>📍 Cra. 31A #8-61<br>Segundo piso – Consultorio 2<br>Barrio Champagnat / El Cedro.<br><br><em>(La ubicación exacta se envía por WhatsApp al agendar).</em>",
+                    q2: "¿Cuál es el horario de atención?",
+                    a2: "• <strong>Lunes a Viernes:</strong> 9:00 a.m. a 4:00 p.m.<br>• <strong>Sábados:</strong> 9:00 a.m. a 2:00 p.m.",
+                    q3: "¿Atienden por orden de llegada o con cita?",
+                    a3: "Sí, atendemos <strong>únicamente con cita previa</strong> para garantizar el mejor servicio y el tiempo dedicado a cada paciente.",
+                    q4: "¿Toman radiografías?",
+                    a4: "No tomamos radiografías directamente; sin embargo, te podemos recomendar un lugar para hacértelas.<br><br>El paciente puede tomárselas donde le quede más fácil. Una vez las tenga, debe enviarlas a nuestro correo: <br><strong>kclaboratoriodental@gmail.com</strong>",
+                    cat_payments: "Pagos",
+                    q5: "¿Qué métodos de pago manejan?",
+                    a5: "Aceptamos los siguientes métodos de pago:<br>• Nequi.<br>• Transferencia Bancolombia.<br>• Clave BRE-B.<br>• Efectivo.<br>• Tarjetas débito y crédito (Contamos con datáfono).",
+                    q6: "¿Cómo es el método de pago para tratamientos y prótesis?",
+                    a6: "Para tratamientos como extracciones, calzas, resinas, diseños de sonrisa, mini diseños, entre otros, el pago es <strong>de contado</strong>.<br><br>Para prótesis, coronas, etc., se abona el <strong>50% al iniciar</strong> el tratamiento y el <strong>50% restante el día de la entrega</strong>.",
+                    q7: "¿Cuánto tiempo tardan en entregar una prótesis?",
+                    a7: "• <strong>Prótesis en general:</strong> Aproximadamente 1 semana, con un máximo de 12 días.<br>• <strong>Acker flexible:</strong> 4 días.",
+                    cat_evaluation: "Valoración",
+                    q8: "¿La valoración odontológica tiene algún costo?",
+                    a8: "No, nuestra valoración inicial es <strong>totalmente gratis</strong>.",
+                    cat_prices: "Precios",
+                    q9: "¿Qué costo tienen las prótesis y coronas dentales?",
+                    a9: "<strong>Prótesis Totales:</strong><br>• Acrílico: $300.000<br>• Alto impacto: $450.000<br>• Biocaracterizadas: $550.000<br><br><strong>Prótesis Parciales:</strong><br>• Flexibles: $400.000<br>• Acker flexible: $300.000<br><br><strong>Coronas:</strong><br>• Metal-cerámica: $600.000<br>• Zirconio: $880.000",
+                    q10: "¿Qué precio tiene una extracción dental?",
+                    a10: "El costo de las extracciones dentales comienza desde <strong>$70.000</strong>. Lo ideal es que el paciente cuente con una radiografía para poder evaluar el procedimiento con precisión.",
+                    q11: "¿Hacen calzas (resinas)? ¿Qué precio tienen?",
+                    a11: "Sí, realizamos calzas. El precio inicia desde <strong>$60.000</strong> y puede variar según el tamaño de la caries.",
+                    q12: "¿Cuánto cuesta la extracción de cordales (muelas del juicio)?",
+                    a12: "Para la extracción de cordales es estrictamente <strong>necesario contar con una radiografía</strong>. Esto nos permite evaluar el caso específico y brindar una cotización exacta.",
+                    btn_back: "<span class='return-arrow'>←</span> Volver al inicio"
+                },
+                en: {
+                    title_main: "Frequently <br><span class='gradient-text'>Asked Questions</span>",
+                    subtitle: "All the information about our processes, locations, prices, and delivery times, resolved quickly and directly.",
+                    nav_home: "Home",
+                    nav_procedures: "Procedures",
+                    nav_about: "About Me",
+                    nav_testimonials: "Testimonials",
+                    nav_contact: "Contact Us",
+                    cat_general: "General Information",
+                    q1: "Where are you located?",
+                    a1: "We are located near the Canchas Panamericanas, in the Champagnat neighborhood (also known as El Cedro).<br><br>📍 Cra. 31A #8-61<br>Second floor – Office 2<br>Champagnat / El Cedro neighborhood.<br><br><em>(Exact location is sent via WhatsApp when booking).</em>",
+                    q2: "What are your business hours?",
+                    a2: "• <strong>Monday to Friday:</strong> 9:00 a.m. to 4:00 p.m.<br>• <strong>Saturdays:</strong> 9:00 a.m. to 2:00 p.m.",
+                    q3: "Do you require appointments or accept walk-ins?",
+                    a3: "Yes, we attend <strong>by appointment only</strong> to guarantee the best service and dedicated time for each patient.",
+                    q4: "Do you take X-rays?",
+                    a4: "We do not take X-rays directly; however, we can recommend a place to get them done.<br><br>The patient can take them wherever is most convenient. Once you have them, you must send them to our email: <br><strong>kclaboratoriodental@gmail.com</strong>",
+                    cat_payments: "Payments",
+                    q5: "What payment methods do you accept?",
+                    a5: "We accept the following payment methods:<br>• Nequi.<br>• Bancolombia transfer.<br>• BRE-B key.<br>• Cash.<br>• Debit and credit cards (We have a POS terminal).",
+                    q6: "What are the payment terms for treatments and prostheses?",
+                    a6: "For treatments such as extractions, fillings, resins, smile designs, mini designs, among others, payment is <strong>upfront</strong>.<br><br>For prostheses, crowns, etc., <strong>50% is paid at the start</strong> of the treatment and the remaining <strong>50% on the day of delivery</strong>.",
+                    q7: "What is the delivery time for prostheses?",
+                    a7: "• <strong>General prostheses:</strong> Approximately 1 week, up to a maximum of 12 days.<br>• <strong>Flexible Acker:</strong> 4 days.",
+                    cat_evaluation: "Evaluation",
+                    q8: "Does the dental evaluation have any cost?",
+                    a8: "No, our initial evaluation is <strong>completely free of charge</strong>.",
+                    cat_prices: "Prices",
+                    q9: "How much do dental prostheses and crowns cost?",
+                    a9: "<strong>Complete Prostheses:</strong><br>• Acrylic: $300.000<br>• High impact: $450.000<br>• Bio-characterized: $550.000<br><br><strong>Partial Prostheses:</strong><br>• Flexible: $400.000<br>• Flexible Acker: $300.000<br><br><strong>Crowns:</strong><br>• Metal-ceramic: $600.000<br>• Zirconium: $880.000",
+                    q10: "How much does a dental extraction cost?",
+                    a10: "The cost of dental extractions starts at <strong>$70.000</strong>. Ideally, the patient should have an X-ray so we can evaluate the procedure accurately.",
+                    q11: "Do you do fillings (resins)? What is the price?",
+                    a11: "Yes, we do fillings. The price starts at <strong>$60.000</strong> and may vary depending on the size of the cavity.",
+                    q12: "How much does wisdom tooth removal cost?",
+                    a12: "For wisdom tooth removal, it is strictly <strong>necessary to have an X-ray</strong>. This allows us to evaluate the specific case and provide an exact quote.",
+                    btn_back: "<span class='return-arrow'>←</span> Back to home"
+                }
+            };
+
+            const btnEs = document.getElementById('btn-es');
+            const btnEn = document.getElementById('btn-en');
+            const elementsToTranslate = document.querySelectorAll('[data-i18n]');
+
+            function changeLanguage(lang) {
+                // Actualizar clases activas en los botones
+                if(lang === 'es') {
+                    btnEs.classList.add('active-lang');
+                    btnEn.classList.remove('active-lang');
+                    document.documentElement.lang = "es";
+                } else {
+                    btnEn.classList.add('active-lang');
+                    btnEs.classList.remove('active-lang');
+                    document.documentElement.lang = "en";
+                }
+
+                // Cambiar los textos
+                elementsToTranslate.forEach((element) => {
+                    const key = element.getAttribute('data-i18n');
+                    if (translations[lang][key]) {
+                        // Añadir clase para la animación suave
+                        element.classList.remove('fade-text');
+                        void element.offsetWidth; // Forzar un reflow para reiniciar la animación
+                        element.classList.add('fade-text');
+                        
+                        // Usar innerHTML porque tenemos etiquetas <strong> y <br> en los textos
+                        element.innerHTML = translations[lang][key];
+                    }
+                });
+
+                // Reajustar la altura del acordeón si hay una tarjeta abierta
+                faqCards.forEach(card => {
+                    if (card.classList.contains("active-card")) {
+                        const answer = card.querySelector(".faq-answer-content");
+                        answer.style.maxHeight = answer.scrollHeight + "px";
+                    }
+                });
+            }
+
+            // Eventos de clic
+            btnEs.addEventListener('click', (e) => {
+                e.preventDefault();
+                changeLanguage('es');
+            });
+
+            btnEn.addEventListener('click', (e) => {
+                e.preventDefault();
+                changeLanguage('en');
             });
         });
     </script>
